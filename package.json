@@ -12,5 +12,26 @@
     "framework"
   ],
   "author": "zyc",
-  "license": "ISC"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wfcsm/pen.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wfcsm/pen/issues"
+  },
+  "homepage": "https://github.com/wfcsm/pen#readme",
+  "dependencies": {
+    "vue": "^2.6.10",
+    "vue-hot-reload-api": "^2.3.3"
+  },
+  "devDependencies": {
+    "@vue/component-compiler-utils": "^3.0.0",
+    "parcel-bundler": "^1.12.3",
+    "stylus": "^0.54.5",
+    "vue-template-compiler": "^2.6.10"
+  },
+  "alias": {
+    "vue" : "./node_modules/vue/dist/vue.common.js"
+  }
 }

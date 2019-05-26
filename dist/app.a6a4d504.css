@@ -1,0 +1,22 @@
+.p-button[data-v-23418c] {
+  font-size: 14px;
+  color: #333;
+  padding: 12px 20px;
+  background: #fff;
+  border: 1px solid #dcdfe6;
+  color: #606266;
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+}
+.p-button[data-v-23418c]:focus,
+.p-button[data-v-23418c]:hover {
+  color: #409eff;
+  border-color: #c6e2ff;
+  background: #ecf5ff;
+}
+.p-button[data-v-23418c]:active {
+  color: #3a8ee6;
+  border-color: #3a8ee6;
+}
+
