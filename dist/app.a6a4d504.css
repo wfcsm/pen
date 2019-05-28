@@ -158,6 +158,14 @@
 .p-input > input[disabled][data-v-3ed1c1] {
   cursor: not-allowed;
 }
-.p-input > span[data-v-3ed1c1] {
+.p-input > input.errormessage[data-v-3ed1c1] {
+  border-color: #f56c6c;
+}
+.p-input > div[data-v-3ed1c1] {
   line-height: 40px;
+  margin-left: 0.5em;
+  color: #f56c6c;
+}
+.p-input > div .error[data-v-3ed1c1] {
+  fill: #f56c6c;
 }

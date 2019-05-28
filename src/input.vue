@@ -1,13 +1,28 @@
 <template>
     <div class="p-input" >
-        <input :placeholder="placeholder" :disabled="disabled" />
-        <div >{{erromessage}}</div>
+        <input :placeholder="placeholder" :disabled="disabled" :class="{'errormessage':errorShow}"/>
+        <div v-if="errorShow">
+            <p-icon name="error" class="error"></p-icon>
+            {{erromessage}}
+        </div>
     </div>
 </template>
 
 <script>
+import PIcon from './icon'
 export default {
     name:"PInput",
+    components:{
+        PIcon
+    },
+    computed:{
+        errorShow(){
+            if(this.erromessage){
+                return true
+            }
+            return false
+        }
+    },
     props:{
         placeholder:{
             type:String
@@ -48,9 +63,17 @@ export default {
         &[disabled]{
             cursor: not-allowed;
         }
+        &.errormessage{
+            border-color:#f56c6c
+        }
     }
-    >span{
+    >div{
         line-height: 40px;
+        margin-left: .5em;
+        color:#f56c6c;
+        .error{
+            fill:#f56c6c;
+        }
     }
 }
 </style>
