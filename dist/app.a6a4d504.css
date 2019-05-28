@@ -138,19 +138,26 @@
   margin-left: -1px;
 }
 .p-input[data-v-3ed1c1] {
-  width: 180px;
+  display: flex;
+  align-items: cneter;
+  height: 40px;
 }
 .p-input > input[data-v-3ed1c1] {
   border-radius: 4px;
   padding: 0 15px;
-  height: 40px;
   line-height: 40px;
   background: #fff;
   border: 1px solid #dcdfe6;
   cursor: pointer;
   outline: none;
-  width: 100%;
+  width: 180px;
 }
 .p-input > input[data-v-3ed1c1]:focus {
   border-color: #409eff;
+}
+.p-input > input[disabled][data-v-3ed1c1] {
+  cursor: not-allowed;
+}
+.p-input > span[data-v-3ed1c1] {
+  line-height: 40px;
 }

@@ -12765,8 +12765,24 @@ exports.default = void 0;
 //
 //
 //
+//
 var _default = {
-  name: "PInput"
+  name: "PInput",
+  props: {
+    placeholder: {
+      type: String
+    },
+    disabled: {
+      type: Boolean,
+      default: false
+    },
+    erromessage: {
+      type: String
+    }
+  },
+  mounted: function mounted() {
+    console.log(this.erromessage);
+  }
 };
 exports.default = _default;
         var $3ed1c1 = exports.default || module.exports;
@@ -12781,18 +12797,15 @@ exports.default = _default;
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "p-input" }, [
+    _c("input", {
+      attrs: { placeholder: _vm.placeholder, disabled: _vm.disabled }
+    }),
+    _vm._v(" "),
+    _c("div", [_vm._v(_vm._s(_vm.erromessage))])
+  ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "p-input" }, [
-      _c("input", { attrs: { placeholder: "请输入内容" } })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
           return {
