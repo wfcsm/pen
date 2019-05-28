@@ -1,17 +1,28 @@
 <template>
-  <div class="basdas">
+  <div class="button-group">
     <slot></slot>
   </div>
 </template>
 
 <script>
 export default {
-  name: "PButtonGroup"
+  name: "PButtonGroup",
+  mounted(){
+    for(let node of this.$el.children){
+  
+        let name = node.tagName.toLowerCase();
+        if(name !== "button"){
+            console.error(`p-button-group内部应该使用button,但却检测到${name}`);
+        }
+    }
+  }
+
+
 };
 </script>
 
 <style lang="scss" scoped>
-.basdas {
+.button-group {
   display: inline-flex;
   // border: 1px saddlebrown solid;
   > .p-button {

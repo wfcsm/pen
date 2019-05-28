@@ -12673,7 +12673,36 @@ exports.default = void 0;
 //
 //
 var _default = {
-  name: "PButtonGroup"
+  name: "PButtonGroup",
+  mounted: function mounted() {
+    var _iteratorNormalCompletion = true;
+    var _didIteratorError = false;
+    var _iteratorError = undefined;
+
+    try {
+      for (var _iterator = this.$el.children[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+        var node = _step.value;
+        var name = node.tagName.toLowerCase();
+
+        if (name !== "button") {
+          console.error("p-button-group\u5185\u90E8\u5E94\u8BE5\u4F7F\u7528button,\u4F46\u5374\u68C0\u6D4B\u5230".concat(name));
+        }
+      }
+    } catch (err) {
+      _didIteratorError = true;
+      _iteratorError = err;
+    } finally {
+      try {
+        if (!_iteratorNormalCompletion && _iterator.return != null) {
+          _iterator.return();
+        }
+      } finally {
+        if (_didIteratorError) {
+          throw _iteratorError;
+        }
+      }
+    }
+  }
 };
 exports.default = _default;
         var $68f80a = exports.default || module.exports;
@@ -12688,7 +12717,7 @@ exports.default = _default;
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "basdas" }, [_vm._t("default")], 2)
+  return _c("div", { staticClass: "button-group" }, [_vm._t("default")], 2)
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -12772,7 +12801,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "2712" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "7412" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
