@@ -1,22 +1,120 @@
+.icon[data-v-d05560] {
+  width: 1.2em;
+  height: 1.2em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+@keyframes spin-data-v-23418c {
+0% {
+    transform: rotateZ(0deg);
+}
+100% {
+    transform: rotateZ(360deg);
+}
+}
 .p-button[data-v-23418c] {
   font-size: 14px;
-  color: #333;
-  padding: 12px 20px;
-  background: #fff;
+  padding: 10px 20px;
   border: 1px solid #dcdfe6;
-  color: #606266;
   border-radius: 4px;
   outline: none;
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
-.p-button[data-v-23418c]:focus,
-.p-button[data-v-23418c]:hover {
+.p-button.is-disabled[data-v-23418c] {
+  color: #c0c4cc;
+  cursor: not-allowed;
+  background-image: none;
+  background-color: #fff;
+  border-color: #ebeef5;
+}
+.p-button.is-circle[data-v-23418c] {
+  border-radius: 20px;
+}
+.p-button.p-button-default[data-v-23418c] {
+  background: #fff;
+  color: #606266;
+}
+.p-button.p-button-default[data-v-23418c]:focus, .p-button.p-button-default[data-v-23418c]:hover {
   color: #409eff;
   border-color: #c6e2ff;
   background: #ecf5ff;
 }
-.p-button[data-v-23418c]:active {
+.p-button.p-button-default[data-v-23418c]:active {
   color: #3a8ee6;
   border-color: #3a8ee6;
 }
-
+.p-button.p-button-primary[data-v-23418c] {
+  color: #fff;
+  background-color: #409eff;
+  border-color: #409eff;
+}
+.p-button.p-button-primary[data-v-23418c]:focus, .p-button.p-button-primary[data-v-23418c]:hover {
+  background: #66b1ff;
+  border-color: #66b1ff;
+}
+.p-button.p-button-primary[data-v-23418c]:active {
+  background: #3a8ee6;
+  border-color: #3a8ee6;
+}
+.p-button.p-button-success[data-v-23418c] {
+  color: #fff;
+  background-color: #67c23a;
+  border-color: #67c23a;
+}
+.p-button.p-button-success[data-v-23418c]:focus, .p-button.p-button-success[data-v-23418c]:hover {
+  background: #85ce61;
+  border-color: #85ce61;
+}
+.p-button.p-button-success[data-v-23418c]:active {
+  background: #5daf34;
+  border-color: #5daf34;
+}
+.p-button.p-button-info[data-v-23418c] {
+  color: #fff;
+  background-color: #909399;
+  border-color: #909399;
+}
+.p-button.p-button-info[data-v-23418c]:focus, .p-button.p-button-info[data-v-23418c]:hover {
+  background: #a6a9ad;
+  border-color: #a6a9ad;
+}
+.p-button.p-button-info[data-v-23418c]:active {
+  background: #82848a;
+  border-color: #82848a;
+}
+.p-button.p-button-warning[data-v-23418c] {
+  color: #fff;
+  background-color: #e6a23c;
+  border-color: #e6a23c;
+}
+.p-button.p-button-warning[data-v-23418c]:focus, .p-button.p-button-warning[data-v-23418c]:hover {
+  background: #ebb563;
+  border-color: #ebb563;
+}
+.p-button.p-button-warning[data-v-23418c]:active {
+  background: #cf9236;
+  border-color: #cf9236;
+}
+.p-button.p-button-danger[data-v-23418c] {
+  color: #fff;
+  background-color: #f56c6c;
+  border-color: #f56c6c;
+}
+.p-button.p-button-danger[data-v-23418c]:focus, .p-button.p-button-danger[data-v-23418c]:hover {
+  background: #f78989;
+  border-color: #f78989;
+}
+.p-button.p-button-danger[data-v-23418c]:active {
+  background: #dd6161;
+  border-color: #dd6161;
+}
+.p-button .loading[data-v-23418c], .p-button .picon[data-v-23418c] {
+  margin-right: 0.5em;
+}
+.p-button .loading[data-v-23418c] {
+  animation: spin-data-v-23418c 2s linear infinite;
+}

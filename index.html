@@ -6,13 +6,56 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>测试</title>
     <style>
-    *,*::before,*::after{box-sizing: border-box;margin:0;padding: 0}
+    *,*::before,*::after{
+        box-sizing: border-box;
+        margin:0;
+        padding: 0;
+    }
+    body{
+        font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,SimSun,sans-serif;
+        font-size: 14px;
+    }
+    .exhibition{
+        margin: 20px
+    }
    
     </style>
 </head>
 <body>
     <div id="app" style="margin:20px">
-        <p-button>按钮</p-button>
+        <div class="exhibition">
+            <p-button >默认按钮</p-button>
+            <p-button type="primary" >默认按钮</p-button>
+            <p-button type="success" >默认按钮</p-button>
+            <p-button type="info">默认按钮</p-button>
+            <p-button type="warning">默认按钮</p-button>
+            <p-button type="danger">默认按钮</p-button>
+        </div>
+        <div class="exhibition">
+            <p-button :circle="true">默认按钮</p-button>
+            <p-button type="primary" :circle="true">默认按钮</p-button>
+            <p-button type="success" :circle="true">默认按钮</p-button>
+            <p-button type="info" :circle="true">默认按钮</p-button>
+            <p-button type="warning" :circle="true">默认按钮</p-button>
+            <p-button type="danger" :circle="true" >默认按钮</p-button>
+        </div>
+        <div class="exhibition">
+            <p-button :circle="true" :disabled="true">默认按钮</p-button>
+            <p-button type="primary" :circle="true" :disabled="true">默认按钮</p-button>
+            <p-button type="success" :circle="true" :disabled="true">默认按钮</p-button>
+            <p-button type="info" :circle="true" :disabled="true">默认按钮</p-button>
+            <p-button type="warning" :circle="true" :disabled="true">默认按钮</p-button>
+            <p-button type="danger" :circle="true" :disabled="true">默认按钮</p-button>
+        </div>
+        <div class="exhibition">  
+            <p-button type="primary" icon="delete"  :circle="true"></p-button>
+            <p-button type="primary" icon="share"></p-button>
+            <p-button type="primary" icon="edit"></p-button> 
+        </div>
+        <div class="exhibition">  
+            <p-button type="primary" icon="delete" :loading="true"  :circle="true">默认按钮</p-button>
+            <p-button type="primary" icon="delete" :loading="true"  >默认按钮</p-button>
+        </div>
     </div>
     <script src="./src/app.js"></script>
 </body>
