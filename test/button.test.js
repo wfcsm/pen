@@ -32,5 +32,27 @@ const expect = chai.expect;
          expect(useElements[0].getAttribute('xlink:href')).to.equal('#icon-loading')
          vm.$destroy()
      })
+     it("设置disabed",()=>{
+         const Constructor=Vue.extend(Button);
+         const vm = new Constructor({
+             propsData:{
+                disabled:true
+             }
+         }).$mount()
+         const useElement=vm.$el.querySelectorAll("button");
+         expect(vm.$el.getAttribute("disabled")).to.equal("disabled")
+         vm.$destroy()
+     })
+     it("设置circle",()=>{
+        const Constructor=Vue.extend(Button);
+        const vm = new Constructor({
+            propsData:{
+                circle:true
+            }
+        }).$mount()
+        const useElement=vm.$el.querySelectorAll("button");
+        expect(vm.$el.getAttribute("class").indexOf("is-circle")>0).to.equal(true)
+        vm.$destroy()
+    })
 
  })

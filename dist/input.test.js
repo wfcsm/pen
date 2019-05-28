@@ -222,7 +222,7 @@ var staticRenderFns = []
           };
         })());
       
-},{"./svg.js":"kLUt"}],"qcet":[function(require,module,exports) {
+},{"./svg.js":"kLUt"}],"eGlL":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -249,11 +249,16 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
+//
 var _default = {
-  name: "PenButton",
+  name: "PInput",
+  components: {
+    PIcon: _icon.default
+  },
   computed: {
-    show: function show() {
-      if ($children) {
+    errorShow: function errorShow() {
+      if (this.erromessage) {
         return true;
       }
 
@@ -261,118 +266,107 @@ var _default = {
     }
   },
   props: {
-    type: {
-      type: String,
-      default: "default"
+    value: {
+      type: String
     },
-    circle: {
-      type: Boolean,
-      default: false
+    placeholder: {
+      type: String
     },
     disabled: {
       type: Boolean,
       default: false
     },
-    icon: {
+    erromessage: {
       type: String
-    },
-    loading: {
-      type: Boolean,
-      default: false
     }
   },
-  components: {
-    PIcon: _icon.default
-  }
+  mounted: function mounted() {}
 };
 exports.default = _default;
-        var $23418c = exports.default || module.exports;
+        var $3ed1c1 = exports.default || module.exports;
       
-      if (typeof $23418c === 'function') {
-        $23418c = $23418c.options;
+      if (typeof $3ed1c1 === 'function') {
+        $3ed1c1 = $3ed1c1.options;
       }
     
         /* template */
-        Object.assign($23418c, (function () {
-          var render = function () {
-var _obj;
-var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('button',{staticClass:"p-button",class:( _obj = {}, _obj[("p-button-" + _vm.type)] = true, _obj['is-circle'] = _vm.circle, _obj['is-disabled'] = _vm.disabled, _obj ),attrs:{"disabled":_vm.disabled}},[(_vm.icon && !_vm.loading)?_c('p-icon',{staticClass:"picon",attrs:{"name":_vm.icon}}):_vm._e(),_vm._v(" "),(_vm.loading)?_c('p-icon',{staticClass:"loading",attrs:{"name":"loading"}}):_vm._e(),_vm._v(" "),_c('div',{staticClass:"wrapper"},[_vm._t("default")],2)],1)}
+        Object.assign($3ed1c1, (function () {
+          var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"p-input"},[_c('input',{class:{erromessage: _vm.erromessage},attrs:{"placeholder":_vm.placeholder,"disabled":_vm.disabled},domProps:{"value":_vm.value},on:{"change":function($event){return _vm.$emit('change',$event.target.value)},"input":function($event){return _vm.$emit('input',$event.target.value)},"focus":function($event){return _vm.$emit('focus',$event.target.value)},"blur":function($event){return _vm.$emit('blur',$event.target.value)}}}),_vm._v(" "),(_vm.erromessage)?_c('div',[_c('p-icon',{staticClass:"error",attrs:{"name":"error"}}),_vm._v("\n        "+_vm._s(_vm.erromessage)+"\n    ")],1):_vm._e()])}
 var staticRenderFns = []
 
           return {
             render: render,
             staticRenderFns: staticRenderFns,
             _compiled: true,
-            _scopeId: "data-v-23418c",
+            _scopeId: "data-v-3ed1c1",
             functional: undefined
           };
         })());
       
-},{"./icon":"Bqhn"}],"OGAT":[function(require,module,exports) {
+},{"./icon":"Bqhn"}],"spTe":[function(require,module,exports) {
 "use strict";
 
 var _vue = _interopRequireDefault(require("vue"));
 
-var _button = _interopRequireDefault(require("../src/button"));
+var _input = _interopRequireDefault(require("../src/input"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var expect = chai.expect;
 _vue.default.config.productionTip = false;
 _vue.default.config.devtools = false;
-describe('Button', function () {
+describe('Input', function () {
   it('存在.', function () {
-    expect(_button.default).to.be.ok;
+    expect(_input.default).to.be.ok;
   });
-  it('可以设置icon.', function () {
-    var Constructor = _vue.default.extend(_button.default);
+  it('接受value.', function () {
+    var Constructor = _vue.default.extend(_input.default);
 
     var vm = new Constructor({
       propsData: {
-        icon: 'delete'
+        value: '123'
       }
     }).$mount();
-    var useElement = vm.$el.querySelector('use');
-    expect(useElement.getAttribute('xlink:href')).to.equal('#icon-delete');
+    var useElement = vm.$el.querySelector('Input');
+    expect(useElement.value).to.equal('123');
     vm.$destroy();
   });
-  it('可以设置loading.', function () {
-    var Constructor = _vue.default.extend(_button.default);
+  it('接受placeholder.', function () {
+    var Constructor = _vue.default.extend(_input.default);
 
     var vm = new Constructor({
       propsData: {
-        loading: true
+        placeholder: '123'
       }
     }).$mount();
-    var useElements = vm.$el.querySelectorAll('use');
-    expect(useElements.length).to.equal(1);
-    expect(useElements[0].getAttribute('xlink:href')).to.equal('#icon-loading');
+    var useElement = vm.$el.querySelector('Input');
+    expect(useElement.getAttribute("placeholder")).to.equal('123');
     vm.$destroy();
   });
-  it("设置disabed", function () {
-    var Constructor = _vue.default.extend(_button.default);
+  it('接受disabled.', function () {
+    var Constructor = _vue.default.extend(_input.default);
 
     var vm = new Constructor({
       propsData: {
         disabled: true
       }
     }).$mount();
-    var useElement = vm.$el.querySelectorAll("button");
-    expect(vm.$el.getAttribute("disabled")).to.equal("disabled");
+    var useElement = vm.$el.querySelector('Input');
+    expect(useElement.getAttribute("disabled")).to.equal("disabled");
     vm.$destroy();
   });
-  it("设置circle", function () {
-    var Constructor = _vue.default.extend(_button.default);
+  it('接受erromessage.', function () {
+    var Constructor = _vue.default.extend(_input.default);
 
     var vm = new Constructor({
       propsData: {
-        circle: false
+        erromessage: "sadaads"
       }
     }).$mount();
-    var useElement = vm.$el.querySelectorAll("button");
-    expect(vm.$el.getAttribute("class").indexOf("is-circle") > 0).to.equal(true);
+    var useElement = vm.$el.querySelector('Input');
+    expect(useElement.getAttribute("class")).to.equal("erromessage");
     vm.$destroy();
   });
 });
-},{"vue":"ApMz","../src/button":"qcet"}]},{},["OGAT"], null)
-//# sourceMappingURL=/button.test.js.map
+},{"vue":"ApMz","../src/input":"eGlL"}]},{},["spTe"], null)
+//# sourceMappingURL=/input.test.js.map

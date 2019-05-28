@@ -70,7 +70,9 @@
         </div> -->
 
         <div class="exhibition">  
-            <p-input placeholder="请输入内容" disabled  erromessage></p-input>
+            <p-input placeholder="请输入内容" ></p-input>
+            {{message}}
+            <button @click="message+=1">+1</button>
         </div>
 
     </div>

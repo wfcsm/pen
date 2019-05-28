@@ -5,12 +5,21 @@ import PButtonGroup from './button-group'
 import PInput from './input'
 
 
-new Vue({
+var qwe =new Vue({
     el:"#app",
+    data:{
+        message:" "
+    },
     components:{
         PButton,
         PIcon,
         PButtonGroup,
         PInput
+    },
+    methods:{
+        
+    },
+    mounted(){
+       
     }
 })

@@ -12774,6 +12774,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 var _default = {
   name: "PInput",
   components: {
@@ -12789,6 +12796,9 @@ var _default = {
     }
   },
   props: {
+    value: {
+      type: String
+    },
     placeholder: {
       type: String
     },
@@ -12819,11 +12829,26 @@ exports.default = _default;
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "p-input" }, [
     _c("input", {
-      class: { errormessage: _vm.errorShow },
-      attrs: { placeholder: _vm.placeholder, disabled: _vm.disabled }
+      class: { erromessage: _vm.erromessage },
+      attrs: { placeholder: _vm.placeholder, disabled: _vm.disabled },
+      domProps: { value: _vm.value },
+      on: {
+        change: function($event) {
+          return _vm.$emit("change", $event.target.value)
+        },
+        input: function($event) {
+          return _vm.$emit("input", $event.target.value)
+        },
+        focus: function($event) {
+          return _vm.$emit("focus", $event.target.value)
+        },
+        blur: function($event) {
+          return _vm.$emit("blur", $event.target.value)
+        }
+      }
     }),
     _vm._v(" "),
-    _vm.errorShow
+    _vm.erromessage
       ? _c(
           "div",
           [
@@ -12883,14 +12908,23 @@ var _input = _interopRequireDefault(require("./input"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-new _vue.default({
+var qwe = new _vue.default({
   el: "#app",
+  data: {
+    message: " "
+  },
   components: {
     PButton: _button.default,
     PIcon: _icon.default,
     PButtonGroup: _buttonGroup.default,
     PInput: _input.default
-  }
+  },
+  methods: {
+    assadas: function assadas() {
+      console.log("111");
+    }
+  },
+  mounted: function mounted() {}
 });
 },{"vue":"node_modules/vue/dist/vue.common.js","./button":"src/button.vue","./icon":"src/icon.vue","./button-group":"src/button-group.vue","./input":"src/input.vue"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];

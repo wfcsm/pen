@@ -1,7 +1,14 @@
 <template>
     <div class="p-input" >
-        <input :placeholder="placeholder" :disabled="disabled" :class="{'errormessage':errorShow}"/>
-        <div v-if="errorShow">
+        <input :placeholder="placeholder" 
+               :disabled="disabled" 
+               :class="{erromessage}"
+               :value="value"
+               @change="$emit('change',$event.target.value)"
+               @input="$emit('input',$event.target.value)"
+               @focus="$emit('focus',$event.target.value)"
+               @blur="$emit('blur',$event.target.value)"/>
+        <div v-if="erromessage">
             <p-icon name="error" class="error"></p-icon>
             {{erromessage}}
         </div>
@@ -24,6 +31,9 @@ export default {
         }
     },
     props:{
+        value:{
+            type:String
+        },
         placeholder:{
             type:String
         },
@@ -36,7 +46,7 @@ export default {
         }
     },
     mounted(){
-        console.log(this.erromessage);
+     
     }
 }
 </script>

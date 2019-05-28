@@ -137,24 +137,6 @@ $danger-active: #dd6161;
     
   }
 
-  //  @each $style in primary  success info warning danger
-  //      &.p-button-#{$style} {
-  //       color: $font-color;
-  //       background-color: $#{$style}-bg-color;
-  //       border-color: $#{$style}-bg-color;
-
-  //       &:focus,
-  //       &:hover {
-  //         background: $#{$style}r-focus-and-hover;
-  //         border-color: $#{$style}r-focus-and-hover;
-  //       }
-
-  //       &:active {
-  //         background: $#{$style}-active;
-  //         border-color: $#{$style}-active;
-  //       }
-        
-  //     } 
 
   &.p-button-primary {
     color: $font-color;
