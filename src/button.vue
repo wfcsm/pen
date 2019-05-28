@@ -6,7 +6,10 @@
           :disabled="disabled">
     <p-icon v-if="icon && !loading" class="picon" :name="icon"></p-icon>
     <p-icon v-if="loading" class="loading"  name="loading"></p-icon>
-    <slot></slot>
+    <div class="wrapper">
+      <slot></slot>
+    </div>
+   
   </button>
 </template>
 
@@ -14,6 +17,14 @@
 import PIcon from './icon'
 export default {
   name: "PenButton",
+  computed:{
+    show(){
+      if($children){
+        return true
+      }
+      return  false
+    }
+  },
   props: {
     type: {
       type: String,
@@ -215,8 +226,10 @@ $danger-active: #dd6161;
     }
     
   }
-  .loading,.picon {
-    margin-right: .5em;
+
+  .loading,.picon{
+    margin-right: .2em;
+    margin-left: .2em;
   }
   .loading {
      animation: spin 2s linear infinite;
