@@ -12810,9 +12810,7 @@ var _default = {
       type: String
     }
   },
-  mounted: function mounted() {
-    console.log(this.erromessage);
-  }
+  mounted: function mounted() {}
 };
 exports.default = _default;
         var $3ed1c1 = exports.default || module.exports;
@@ -12893,7 +12891,348 @@ render._withStripped = true
       
       }
     })();
-},{"./icon":"src/icon.vue","_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"src/app.js":[function(require,module,exports) {
+},{"./icon":"src/icon.vue","_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"src/container.vue":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+//
+//
+//
+//
+//
+//
+var _default = {
+  name: "PContainer",
+  data: function data() {
+    return {
+      containStyle: {
+        hasSider: false
+      }
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    this.$children.forEach(function (vm) {
+      if (vm.$options.name === "PAside") {
+        _this.containStyle.hasSider = true;
+      }
+    });
+  }
+};
+exports.default = _default;
+        var $230c96 = exports.default || module.exports;
+      
+      if (typeof $230c96 === 'function') {
+        $230c96 = $230c96.options;
+      }
+    
+        /* template */
+        Object.assign($230c96, (function () {
+          var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "p-container", class: _vm.containStyle },
+    [_vm._t("default")],
+    2
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+          return {
+            render: render,
+            staticRenderFns: staticRenderFns,
+            _compiled: true,
+            _scopeId: "data-v-230c96",
+            functional: undefined
+          };
+        })());
+      
+    /* hot reload */
+    (function () {
+      if (module.hot) {
+        var api = require('vue-hot-reload-api');
+        api.install(require('vue'));
+        if (api.compatible) {
+          module.hot.accept();
+          if (!module.hot.data) {
+            api.createRecord('$230c96', $230c96);
+          } else {
+            api.reload('$230c96', $230c96);
+          }
+        }
+
+        
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
+      }
+    })();
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"src/header.vue":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+//
+//
+//
+//
+//
+//
+var _default = {
+  name: "PHeader"
+};
+exports.default = _default;
+        var $da80ac = exports.default || module.exports;
+      
+      if (typeof $da80ac === 'function') {
+        $da80ac = $da80ac.options;
+      }
+    
+        /* template */
+        Object.assign($da80ac, (function () {
+          var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "p-header" }, [_vm._t("default")], 2)
+}
+var staticRenderFns = []
+render._withStripped = true
+
+          return {
+            render: render,
+            staticRenderFns: staticRenderFns,
+            _compiled: true,
+            _scopeId: "data-v-da80ac",
+            functional: undefined
+          };
+        })());
+      
+    /* hot reload */
+    (function () {
+      if (module.hot) {
+        var api = require('vue-hot-reload-api');
+        api.install(require('vue'));
+        if (api.compatible) {
+          module.hot.accept();
+          if (!module.hot.data) {
+            api.createRecord('$da80ac', $da80ac);
+          } else {
+            api.reload('$da80ac', $da80ac);
+          }
+        }
+
+        
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
+      }
+    })();
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"src/aside.vue":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+//
+//
+//
+//
+//
+//
+var _default = {
+  name: "PAside"
+};
+exports.default = _default;
+        var $23ae2d = exports.default || module.exports;
+      
+      if (typeof $23ae2d === 'function') {
+        $23ae2d = $23ae2d.options;
+      }
+    
+        /* template */
+        Object.assign($23ae2d, (function () {
+          var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "p-aside" }, [_vm._t("default")], 2)
+}
+var staticRenderFns = []
+render._withStripped = true
+
+          return {
+            render: render,
+            staticRenderFns: staticRenderFns,
+            _compiled: true,
+            _scopeId: "data-v-23ae2d",
+            functional: undefined
+          };
+        })());
+      
+    /* hot reload */
+    (function () {
+      if (module.hot) {
+        var api = require('vue-hot-reload-api');
+        api.install(require('vue'));
+        if (api.compatible) {
+          module.hot.accept();
+          if (!module.hot.data) {
+            api.createRecord('$23ae2d', $23ae2d);
+          } else {
+            api.reload('$23ae2d', $23ae2d);
+          }
+        }
+
+        
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
+      }
+    })();
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"src/main.vue":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+//
+//
+//
+//
+//
+//
+var _default = {
+  name: "PMain"
+};
+exports.default = _default;
+        var $69b86b = exports.default || module.exports;
+      
+      if (typeof $69b86b === 'function') {
+        $69b86b = $69b86b.options;
+      }
+    
+        /* template */
+        Object.assign($69b86b, (function () {
+          var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "p-main" }, [_vm._t("default")], 2)
+}
+var staticRenderFns = []
+render._withStripped = true
+
+          return {
+            render: render,
+            staticRenderFns: staticRenderFns,
+            _compiled: true,
+            _scopeId: "data-v-69b86b",
+            functional: undefined
+          };
+        })());
+      
+    /* hot reload */
+    (function () {
+      if (module.hot) {
+        var api = require('vue-hot-reload-api');
+        api.install(require('vue'));
+        if (api.compatible) {
+          module.hot.accept();
+          if (!module.hot.data) {
+            api.createRecord('$69b86b', $69b86b);
+          } else {
+            api.reload('$69b86b', $69b86b);
+          }
+        }
+
+        
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
+      }
+    })();
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"src/footer.vue":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+//
+//
+//
+//
+//
+//
+var _default = {
+  name: "PFooter"
+};
+exports.default = _default;
+        var $e6c3d1 = exports.default || module.exports;
+      
+      if (typeof $e6c3d1 === 'function') {
+        $e6c3d1 = $e6c3d1.options;
+      }
+    
+        /* template */
+        Object.assign($e6c3d1, (function () {
+          var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "p-footer" }, [_vm._t("default")], 2)
+}
+var staticRenderFns = []
+render._withStripped = true
+
+          return {
+            render: render,
+            staticRenderFns: staticRenderFns,
+            _compiled: true,
+            _scopeId: "data-v-e6c3d1",
+            functional: undefined
+          };
+        })());
+      
+    /* hot reload */
+    (function () {
+      if (module.hot) {
+        var api = require('vue-hot-reload-api');
+        api.install(require('vue'));
+        if (api.compatible) {
+          module.hot.accept();
+          if (!module.hot.data) {
+            api.createRecord('$e6c3d1', $e6c3d1);
+          } else {
+            api.reload('$e6c3d1', $e6c3d1);
+          }
+        }
+
+        
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
+      }
+    })();
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"src/app.js":[function(require,module,exports) {
 "use strict";
 
 var _vue = _interopRequireDefault(require("vue"));
@@ -12906,9 +13245,19 @@ var _buttonGroup = _interopRequireDefault(require("./button-group"));
 
 var _input = _interopRequireDefault(require("./input"));
 
+var _container = _interopRequireDefault(require("./container"));
+
+var _header = _interopRequireDefault(require("./header"));
+
+var _aside = _interopRequireDefault(require("./aside"));
+
+var _main = _interopRequireDefault(require("./main"));
+
+var _footer = _interopRequireDefault(require("./footer"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var qwe = new _vue.default({
+new _vue.default({
   el: "#app",
   data: {
     message: " "
@@ -12917,16 +13266,17 @@ var qwe = new _vue.default({
     PButton: _button.default,
     PIcon: _icon.default,
     PButtonGroup: _buttonGroup.default,
-    PInput: _input.default
+    PInput: _input.default,
+    PContainer: _container.default,
+    PHeader: _header.default,
+    PAside: _aside.default,
+    PMain: _main.default,
+    PFooter: _footer.default
   },
-  methods: {
-    assadas: function assadas() {
-      console.log("111");
-    }
-  },
+  methods: {},
   mounted: function mounted() {}
 });
-},{"vue":"node_modules/vue/dist/vue.common.js","./button":"src/button.vue","./icon":"src/icon.vue","./button-group":"src/button-group.vue","./input":"src/input.vue"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"vue":"node_modules/vue/dist/vue.common.js","./button":"src/button.vue","./icon":"src/icon.vue","./button-group":"src/button-group.vue","./input":"src/input.vue","./container":"src/container.vue","./header":"src/header.vue","./aside":"src/aside.vue","./main":"src/main.vue","./footer":"src/footer.vue"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -12954,7 +13304,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "9046" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "3044" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

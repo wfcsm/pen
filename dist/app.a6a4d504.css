@@ -169,3 +169,24 @@
 .p-input > div .error[data-v-3ed1c1] {
   fill: #f56c6c;
 }
+.p-container[data-v-230c96] {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.p-container.hasSider[data-v-230c96] {
+  flex-direction: row;
+}
+.p-header[data-v-da80ac] {
+  display: flex;
+}
+.p-aside[data-v-23ae2d] {
+  display: flex;
+}
+.p-main[data-v-69b86b] {
+  display: flex;
+  flex-grow: 1;
+}
+.p-footer[data-v-e6c3d1] {
+  display: flex;
+}

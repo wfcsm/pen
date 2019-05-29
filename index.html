@@ -18,11 +18,32 @@
     .exhibition{
         margin: 20px
     }
+    .demo{
+        height: 100vh;
+        border: 1px solid red;
+    }
+    .header,.main,.footer{
+        border:1px solid black
+    }
+
+
    
     </style>
 </head>
 <body>
     <div id="app" style="margin:20px">
+
+        <p-container class="demo">
+               
+                <p-aside>asdasd</p-aside>
+            <p-container>
+                <p-header class="header">header</p-header>
+                <p-main class="main">main</p-main>
+                <p-footer class="footer">footer</p-footer>
+            </p-container>
+            
+        </p-container>
+
         <!-- <div class="exhibition">
             <p-button >默认按钮</p-button>
             <p-button type="primary" >默认按钮</p-button>
@@ -69,12 +90,12 @@
             
         </div> -->
 
-        <div class="exhibition">  
+        <!-- <div class="exhibition">  
             <p-input placeholder="请输入内容" ></p-input>
             {{message}}
             <button @click="message+=1">+1</button>
-        </div>
-
+        </div> -->
+       
     </div>
     <script src="./src/app.js"></script>
 </body>
