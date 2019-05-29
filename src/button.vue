@@ -3,7 +3,8 @@
           :class="{[`p-button-${type}`]:true, 
                     'is-circle':circle,
                     'is-disabled':disabled}"
-          :disabled="disabled">
+          :disabled="disabled"
+          @click="$emit('click',$event)">
     <p-icon v-if="icon && !loading" class="picon" :name="icon"></p-icon>
     <p-icon v-if="loading" class="loading"  name="loading"></p-icon>
     <div class="wrapper">

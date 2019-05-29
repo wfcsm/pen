@@ -10,6 +10,8 @@ import PMain from './main'
 import PFooter from './footer'
 import PRow from './row'
 import PCol from './col'
+import {MyPlugin} from './toast-plugin'
+Vue.use(MyPlugin)
 
 
 
@@ -33,9 +35,17 @@ new Vue({
 
     },
     methods:{
-        
+        toast(value){
+            this.$toast({
+                message:'恭喜你，这是一条成功消息',
+                showClose: false,
+                type:"warning"
+            })
+            console.log(value)
+        }
     },
     mounted(){
-       
+       console.log(MyPlugin)
     }
 })
+

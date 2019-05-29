@@ -922,3 +922,33 @@
     margin-left: 100%;
 }
 }
+.p-toast.toast-bg-info[data-v-fcd2d7] {
+  background-color: #82848a;
+  color: #66696e;
+}
+.p-toast.toast-bg-success[data-v-fcd2d7] {
+  background-color: #5daf34;
+  color: #478826;
+}
+.p-toast.toast-bg-warning[data-v-fcd2d7] {
+  background-color: #cf9236;
+  color: #973a3a;
+}
+.p-toast.toast-bg-error[data-v-fcd2d7] {
+  background-color: #dd6161;
+  color: #b95252;
+}
+.p-toast[data-v-fcd2d7] {
+  border: 1px solid #ebeef5;
+  min-width: 380px;
+  border-radius: 4px;
+  position: fixed;
+  left: 50%;
+  top: 20px;
+  background-color: red;
+  transform: translateX(-50%);
+  padding: 15px 15px 15px 20px;
+  display: flex;
+  align-items: center;
+  border: none;
+}

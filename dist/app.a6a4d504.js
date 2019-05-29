@@ -12551,6 +12551,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
 var _default = {
   name: "PenButton",
   computed: {
@@ -12610,7 +12611,12 @@ exports.default = _default;
       (_obj["is-circle"] = _vm.circle),
       (_obj["is-disabled"] = _vm.disabled),
       _obj),
-      attrs: { disabled: _vm.disabled }
+      attrs: { disabled: _vm.disabled },
+      on: {
+        click: function($event) {
+          return _vm.$emit("click", $event)
+        }
+      }
     },
     [
       _vm.icon && !_vm.loading
@@ -13486,7 +13492,130 @@ render._withStripped = true
       
       }
     })();
-},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"src/app.js":[function(require,module,exports) {
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"src/toast.vue":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+//
+//
+//
+//
+var _default = {
+  name: "PToast",
+  props: {
+    message: {
+      type: String
+    },
+    showClose: {
+      type: Boolean,
+      default: true
+    },
+    "type": {
+      type: String,
+      default: "info"
+    }
+  },
+  mounted: function mounted() {
+    this.autoClose();
+  },
+  methods: {
+    autoClose: function autoClose() {
+      var _this = this;
+
+      if (this.showClose) {
+        setTimeout(function () {
+          _this.closeToast();
+        }, 3000);
+      }
+    },
+    closeToast: function closeToast() {
+      this.$el.remove();
+      this.$destroy();
+    }
+  }
+};
+exports.default = _default;
+        var $fcd2d7 = exports.default || module.exports;
+      
+      if (typeof $fcd2d7 === 'function') {
+        $fcd2d7 = $fcd2d7.options;
+      }
+    
+        /* template */
+        Object.assign($fcd2d7, (function () {
+          var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "p-toast", class: ["toast-bg-" + _vm.type] },
+    [_vm._v(_vm._s(_vm.message))]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+          return {
+            render: render,
+            staticRenderFns: staticRenderFns,
+            _compiled: true,
+            _scopeId: "data-v-fcd2d7",
+            functional: undefined
+          };
+        })());
+      
+    /* hot reload */
+    (function () {
+      if (module.hot) {
+        var api = require('vue-hot-reload-api');
+        api.install(require('vue'));
+        if (api.compatible) {
+          module.hot.accept();
+          if (!module.hot.data) {
+            api.createRecord('$fcd2d7', $fcd2d7);
+          } else {
+            api.reload('$fcd2d7', $fcd2d7);
+          }
+        }
+
+        
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
+      }
+    })();
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"src/toast-plugin.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.MyPlugin = void 0;
+
+var _toast = _interopRequireDefault(require("./toast"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var MyPlugin = {};
+exports.MyPlugin = MyPlugin;
+
+MyPlugin.install = function (Vue, options) {
+  Vue.prototype.$toast = function (propsObjec) {
+    var Constructor = Vue.extend(_toast.default);
+    var toast = new Constructor({
+      propsData: propsObjec
+    });
+    console.log(toast);
+    toast.$mount();
+    document.body.appendChild(toast.$el);
+  };
+};
+},{"./toast":"src/toast.vue"}],"src/app.js":[function(require,module,exports) {
 "use strict";
 
 var _vue = _interopRequireDefault(require("vue"));
@@ -13513,7 +13642,11 @@ var _row = _interopRequireDefault(require("./row"));
 
 var _col = _interopRequireDefault(require("./col"));
 
+var _toastPlugin = require("./toast-plugin");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+_vue.default.use(_toastPlugin.MyPlugin);
 
 new _vue.default({
   el: "#app",
@@ -13533,10 +13666,21 @@ new _vue.default({
     PRow: _row.default,
     PCol: _col.default
   },
-  methods: {},
-  mounted: function mounted() {}
+  methods: {
+    toast: function toast(value) {
+      this.$toast({
+        message: '恭喜你，这是一条成功消息',
+        showClose: false,
+        type: "warning"
+      });
+      console.log(value);
+    }
+  },
+  mounted: function mounted() {
+    console.log(_toastPlugin.MyPlugin);
+  }
 });
-},{"vue":"node_modules/vue/dist/vue.common.js","./button":"src/button.vue","./icon":"src/icon.vue","./button-group":"src/button-group.vue","./input":"src/input.vue","./container":"src/container.vue","./header":"src/header.vue","./aside":"src/aside.vue","./main":"src/main.vue","./footer":"src/footer.vue","./row":"src/row.vue","./col":"src/col.vue"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"vue":"node_modules/vue/dist/vue.common.js","./button":"src/button.vue","./icon":"src/icon.vue","./button-group":"src/button-group.vue","./input":"src/input.vue","./container":"src/container.vue","./header":"src/header.vue","./aside":"src/aside.vue","./main":"src/main.vue","./footer":"src/footer.vue","./row":"src/row.vue","./col":"src/col.vue","./toast-plugin":"src/toast-plugin.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -13564,7 +13708,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "6718" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "8067" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
