@@ -27,8 +27,19 @@
 <link rel="stylesheet" href="/app.a6a4d504.css"></head>
 <body>
     <div id="app" style="margin:20px">
+        <!-- <p-row>
+            <p-col :span="2" class="header">dfsf</p-col>
+            <p-col :span="20" class="header" offset="2">dfsf</p-col>
+        </p-row> -->
+        <div style="border: 1px solid black">
+            <p-row>
+                <p-col :span="2" :sm="{span:12}" :md="{span:22}">dfsf</p-col>
+                <p-col :span="22" :sm="{span:12}" :md="{span:2}">dfsf</p-col>
+            </p-row>
+        </div>
+        
 
-        <p-container class="demo">
+        <!-- <p-container class="demo">
                
                 <p-aside>asdasd</p-aside>
             <p-container>
@@ -37,7 +48,7 @@
                 <p-footer class="footer">footer</p-footer>
             </p-container>
             
-        </p-container>
+        </p-container> -->
 
         <!-- <div class="exhibition">
             <p-button >默认按钮</p-button>

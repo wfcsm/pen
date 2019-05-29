@@ -8,6 +8,8 @@ import PHeader from './header'
 import PAside from './aside'
 import PMain from './main'
 import PFooter from './footer'
+import PRow from './row'
+import PCol from './col'
 
 
 
@@ -25,7 +27,9 @@ new Vue({
         PHeader,
         PAside,
         PMain,
-        PFooter
+        PFooter,
+        PRow,
+        PCol
 
     },
     methods:{

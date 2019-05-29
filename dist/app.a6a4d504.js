@@ -13232,6 +13232,260 @@ render._withStripped = true
       
       }
     })();
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"src/row.vue":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+//
+//
+//
+//
+//
+//
+var _default = {
+  name: "PRow",
+  props: {
+    gutter: {
+      type: [Number, String]
+    }
+  },
+  computed: {
+    rowStyle: function rowStyle() {
+      var gutter = this.gutter;
+      return {
+        marginLeft: -gutter / 2 + 'px',
+        marginRight: -gutter / 2 + 'px'
+      };
+    }
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    this.$children.forEach(function (vm) {
+      vm.gutter = _this.gutter;
+    });
+  }
+};
+exports.default = _default;
+        var $f1c22a = exports.default || module.exports;
+      
+      if (typeof $f1c22a === 'function') {
+        $f1c22a = $f1c22a.options;
+      }
+    
+        /* template */
+        Object.assign($f1c22a, (function () {
+          var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "p-row", style: _vm.rowStyle },
+    [_vm._t("default")],
+    2
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+          return {
+            render: render,
+            staticRenderFns: staticRenderFns,
+            _compiled: true,
+            _scopeId: "data-v-f1c22a",
+            functional: undefined
+          };
+        })());
+      
+    /* hot reload */
+    (function () {
+      if (module.hot) {
+        var api = require('vue-hot-reload-api');
+        api.install(require('vue'));
+        if (api.compatible) {
+          module.hot.accept();
+          if (!module.hot.data) {
+            api.createRecord('$f1c22a', $f1c22a);
+          } else {
+            api.reload('$f1c22a', $f1c22a);
+          }
+        }
+
+        
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
+      }
+    })();
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"src/col.vue":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
+//
+//
+//
+//
+//
+//
+function validator(value) {
+  var keys = Object.keys(value);
+  keys.forEach(function (key) {
+    if (["span", "offset"].includes(key)) {
+      return false;
+    }
+  });
+  return true;
+}
+
+var _default = {
+  name: "PCol",
+  props: {
+    span: {
+      type: [Number, String],
+      default: 24
+    },
+    offset: {
+      type: [Number, String]
+    },
+    xs: {
+      type: Object,
+      validator: validator
+    },
+    sm: {
+      type: Object,
+      validator: validator
+    },
+    md: {
+      type: Object,
+      validator: validator
+    },
+    lg: {
+      type: Object,
+      validator: validator
+    },
+    xl: {
+      type: Object,
+      validator: validator
+    }
+  },
+  computed: {
+    colClass: function colClass() {
+      var span = this.span,
+          offset = this.offset,
+          sm = this.sm,
+          md = this.md,
+          lg = this.lg,
+          xl = this.xl;
+      var smClass = [];
+      var mdClass = [];
+      var lgClass = [];
+      var xlClass = [];
+
+      if (sm) {
+        smClass = [sm.span && "col-sm-span-".concat(sm.span), sm.offset && "col-sm-offset-".concat(sm.offset)];
+      }
+
+      if (md) {
+        mdClass = [md.span && "col-md-span-".concat(md.span), md.offset && "col-md-offset-".concat(md.offset)];
+      }
+
+      if (lg) {
+        lgClass = [lg.span && "col-lg-span-".concat(lg.span), lg.offset && "col-lg-offset-".concat(lg.offset)];
+      }
+
+      if (xl) {
+        xlClass = [xl.span && "col-xl-span-".concat(xl.span), xl.offset && "col-xl-offset-".concat(xl.offset)];
+      }
+
+      return ["col-xs-span-".concat(span), "col-xs-offset-".concat(offset)].concat(_toConsumableArray(smClass), _toConsumableArray(mdClass), _toConsumableArray(lgClass), _toConsumableArray(xlClass));
+    },
+    colStyle: function colStyle() {
+      var gutter = this.gutter;
+      return {
+        paddingLeft: gutter / 2 + "px",
+        paddingRight: gutter / 2 + "px"
+      };
+    }
+  },
+  data: function data() {
+    return {
+      gutter: 0
+    };
+  },
+  mounted: function mounted() {
+    console.log(this.colClass);
+  }
+};
+exports.default = _default;
+        var $c70bdb = exports.default || module.exports;
+      
+      if (typeof $c70bdb === 'function') {
+        $c70bdb = $c70bdb.options;
+      }
+    
+        /* template */
+        Object.assign($c70bdb, (function () {
+          var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "p-col", class: _vm.colClass, style: _vm.colStyle },
+    [_vm._t("default")],
+    2
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+          return {
+            render: render,
+            staticRenderFns: staticRenderFns,
+            _compiled: true,
+            _scopeId: "data-v-c70bdb",
+            functional: undefined
+          };
+        })());
+      
+    /* hot reload */
+    (function () {
+      if (module.hot) {
+        var api = require('vue-hot-reload-api');
+        api.install(require('vue'));
+        if (api.compatible) {
+          module.hot.accept();
+          if (!module.hot.data) {
+            api.createRecord('$c70bdb', $c70bdb);
+          } else {
+            api.reload('$c70bdb', $c70bdb);
+          }
+        }
+
+        
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
+      }
+    })();
 },{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"src/app.js":[function(require,module,exports) {
 "use strict";
 
@@ -13255,6 +13509,10 @@ var _main = _interopRequireDefault(require("./main"));
 
 var _footer = _interopRequireDefault(require("./footer"));
 
+var _row = _interopRequireDefault(require("./row"));
+
+var _col = _interopRequireDefault(require("./col"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 new _vue.default({
@@ -13271,12 +13529,14 @@ new _vue.default({
     PHeader: _header.default,
     PAside: _aside.default,
     PMain: _main.default,
-    PFooter: _footer.default
+    PFooter: _footer.default,
+    PRow: _row.default,
+    PCol: _col.default
   },
   methods: {},
   mounted: function mounted() {}
 });
-},{"vue":"node_modules/vue/dist/vue.common.js","./button":"src/button.vue","./icon":"src/icon.vue","./button-group":"src/button-group.vue","./input":"src/input.vue","./container":"src/container.vue","./header":"src/header.vue","./aside":"src/aside.vue","./main":"src/main.vue","./footer":"src/footer.vue"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"vue":"node_modules/vue/dist/vue.common.js","./button":"src/button.vue","./icon":"src/icon.vue","./button-group":"src/button-group.vue","./input":"src/input.vue","./container":"src/container.vue","./header":"src/header.vue","./aside":"src/aside.vue","./main":"src/main.vue","./footer":"src/footer.vue","./row":"src/row.vue","./col":"src/col.vue"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -13304,7 +13564,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "3044" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "6718" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
