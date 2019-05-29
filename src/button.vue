@@ -29,7 +29,7 @@ export default {
   props: {
     type: {
       type: String,
-      default: "default"
+      default: "normal"
     },
     circle:{
         type:Boolean,
@@ -57,8 +57,7 @@ export default {
 
 <style lang="scss" scoped>
 $font-color: #fff;
-$colorStyle: primary success wraning info danger  ;
-$class-slug: for;
+
 // 默认按钮配色
 $noraml-focus-and-hover-color: #409eff;
 $noraml-focus-and-hover-border-color: #c6e2ff;
@@ -66,28 +65,81 @@ $noraml-focus-and-hover-bg-color: #ecf5ff;
 $noraml-active-bg-color: #3a8ee6;
 $noraml-active-border-color: #3a8ee6;
 // primary按钮配色
-$primary-bg-color: #409eff;
-$primary-focus-and-hover: #66b1ff;
-$primary-active: #3a8ee6;
+%primary-bg-color{
+  background-color:#409eff;
+  border-color:#409eff;
+} 
+%primary-focus-and-hover{
+  background-color:#66b1ff;
+  border-color:#66b1ff;
+} 
+%primary-active{
+  background-color:#3a8ee6;
+  border-color:#3a8ee6;
+} 
 // success按钮配色
-$success-bg-color: #67c23a;
-$success-focus-and-hover: #85ce61;
-$success-active: #5daf34;
+%success-bg-color{
+  background-color: #67c23a;
+   border-color:#67c23a;
+} 
+%success-focus-and-hover{
+  background-color: #85ce61;
+   border-color:#85ce61;
+}
+%success-active{
+  background-color:#5daf34;
+  border-color:#5daf34;
+} 
 // info 按钮配色
-$info-bg-color: #909399;
-$info-focus-and-hover: #a6a9ad;
-$info-active: #82848a;
+%info-bg-color{
+  background-color: #909399;
+  border-color:#909399;
+} 
+%info-focus-and-hover{
+  background-color: #a6a9ad;
+  border-color:#a6a9ad;
+} 
+%info-active{
+  background-color: #82848a;
+  border-color:#82848a;
+} 
 
 // warning 按钮配色
-$warning-bg-color: #e6a23c;
-$warning-focus-and-hover: #ebb563;
-$warning-active: #cf9236;
+%warning-bg-color{
+  background-color: #e6a23c;
+  border-color:#e6a23c
+} 
+%warning-focus-and-hover{
+  background-color: #ebb563;
+  border-color:#ebb563
+} 
+%warning-active{
+  background-color: #cf9236;
+  border-color:#cf9236
+} 
 
 // danger 按钮配色
-$danger-bg-color: #f56c6c;
-$danger-focus-and-hover: #f78989;
-$danger-active: #dd6161;
-
+%danger-bg-color{
+  background-color: #f56c6c;
+  border-color:#f56c6c
+} 
+%danger-focus-and-hover{
+  background-color:#f78989;
+  border-color:#f78989
+} 
+%danger-active{
+  background-color: #dd6161;
+   border-color:#dd6161
+} 
+@mixin set-style($arg){
+  @extend %#{$arg}-bg-color;
+}
+@mixin set-focus-style($arg){
+  @extend %#{$arg}-focus-and-hover;
+}
+@mixin set-active-style($arg){
+   @extend %#{$arg}-active;
+}
 
 @keyframes spin{
   0%{ 
@@ -120,7 +172,20 @@ $danger-active: #dd6161;
     border-radius: 20px;
   }
 
-  &.p-button-default {
+  @each $n in primary,success,info,warning,danger{
+    &.p-button-#{$n}{
+      color:$font-color;
+      @include set-style($n);
+      &:focus,&:hover{
+        @include set-focus-style($n);
+      }
+      &:active{
+        @include set-active-style($n);
+      }
+    }
+  }
+
+  &.p-button-normal {
     background: $font-color;
     color: #606266;
 
@@ -134,98 +199,6 @@ $danger-active: #dd6161;
     &:active {
       color: $noraml-active-bg-color;
       border-color: $noraml-active-border-color;
-    }
-    
-  }
-
-
-  &.p-button-primary {
-    color: $font-color;
-    background-color: $primary-bg-color;
-    border-color: $primary-bg-color;
-
-    &:focus,
-    &:hover {
-      background: $primary-focus-and-hover;
-      border-color: $primary-focus-and-hover;
-    }
-
-    &:active {
-      background: $primary-active;
-      border-color: $primary-active;
-    }
-    
-  }
-
-  &.p-button-success {
-    color: $font-color;
-    background-color: $success-bg-color;
-    border-color: $success-bg-color;
-
-    &:focus,
-    &:hover {
-      background: $success-focus-and-hover;
-      border-color: $success-focus-and-hover;
-    }
-
-    &:active {
-      background: $success-active;
-      border-color: $success-active;
-    }
-    
-  }
-
-  &.p-button-info {
-    color: $font-color;
-    background-color: $info-bg-color;
-    border-color: $info-bg-color;
-
-    &:focus,
-    &:hover {
-      background: $info-focus-and-hover;
-      border-color: $info-focus-and-hover;
-    }
-
-    &:active {
-      background: $info-active;
-      border-color: $info-active;
-    }
-    
-  }
-
- 
-  &.p-button-warning {
-    color: $font-color;
-    background-color: $warning-bg-color;
-    border-color: $warning-bg-color;
-
-    &:focus,
-    &:hover {
-      background: $warning-focus-and-hover;
-      border-color: $warning-focus-and-hover;
-    }
-
-    &:active {
-      background: $warning-active;
-      border-color: $warning-active;
-    }
-    
-  }
-
-  &.p-button-danger {
-    color: $font-color;
-    background-color: $danger-bg-color;
-    border-color: $danger-bg-color;
-
-    &:focus,
-    &:hover {
-      background: $danger-focus-and-hover;
-      border-color: $danger-focus-and-hover;
-    }
-
-    &:active {
-      background: $danger-active;
-      border-color: $danger-active;
     }
     
   }
