@@ -39,7 +39,12 @@ new Vue({
             this.$toast({
                 message:'恭喜你，这是一条成功消息',
                 showClose: false,
-                type:"warning"
+                type:"info",
+                isClose:true,
+                postion:"bottom",
+                callback:function(){
+                    console.log("用户说他知道了")
+                }
             })
             console.log(value)
         }
