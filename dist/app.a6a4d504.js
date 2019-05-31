@@ -13682,127 +13682,7 @@ MyPlugin.install = function (Vue, options) {
     currentToast = createToast(Vue, propsObjec);
   };
 };
-},{"./toast":"src/toast.vue"}],"src/tabs.vue":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _vue = _interopRequireDefault(require("vue"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-//
-//
-//
-//
-//
-//
-//
-var _default = {
-  name: "PTabs",
-  props: {
-    selected: {
-      type: String
-    }
-  },
-  data: function data() {
-    return {
-      eventBus: new _vue.default()
-    };
-  },
-  provide: function provide() {
-    return {
-      eventBus: this.eventBus
-    };
-  },
-  mounted: function mounted() {
-    var _this = this;
-
-    //first loading line
-    this.$children.forEach(function (vm) {
-      if (vm.name === _this.selected) {
-        var _vm$$el$getBoundingCl = vm.$el.getBoundingClientRect(),
-            width = _vm$$el$getBoundingCl.width;
-
-        width = width - 40;
-        var y = vm.$el.offsetLeft;
-        _this.$refs.line.style.width = "".concat(width, "px");
-        _this.$refs.line.style.left = "".concat(y, "px");
-      }
-    }); //onclick line
-
-    this.eventBus.$on("update:selected", function (name, width, y) {
-      _this.$children.forEach(function (childVm) {
-        if (childVm.$options.name === "PTabsPane" && childVm.name === _this.selected) {
-          _this.$refs.line.style.width = "".concat(width, "px");
-          _this.$refs.line.style.left = "".concat(y, "px");
-        }
-      });
-    });
-    this.eventBus.$emit("update:selected", this.selected);
-  }
-};
-exports.default = _default;
-        var $a06803 = exports.default || module.exports;
-      
-      if (typeof $a06803 === 'function') {
-        $a06803 = $a06803.options;
-      }
-    
-        /* template */
-        Object.assign($a06803, (function () {
-          var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "tabs" },
-    [
-      _vm._t("default"),
-      _vm._v(" "),
-      _c("div", { ref: "line", staticClass: "line" })
-    ],
-    2
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-
-          return {
-            render: render,
-            staticRenderFns: staticRenderFns,
-            _compiled: true,
-            _scopeId: "data-v-a06803",
-            functional: undefined
-          };
-        })());
-      
-    /* hot reload */
-    (function () {
-      if (module.hot) {
-        var api = require('vue-hot-reload-api');
-        api.install(require('vue'));
-        if (api.compatible) {
-          module.hot.accept();
-          if (!module.hot.data) {
-            api.createRecord('$a06803', $a06803);
-          } else {
-            api.reload('$a06803', $a06803);
-          }
-        }
-
-        
-        var reloadCSS = require('_css_loader');
-        module.hot.dispose(reloadCSS);
-        module.hot.accept(reloadCSS);
-      
-      }
-    })();
-},{"vue":"node_modules/vue/dist/vue.common.js","_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js"}],"src/tabs-pane.vue":[function(require,module,exports) {
+},{"./toast":"src/toast.vue"}],"src/tabs-pane.vue":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -13945,7 +13825,130 @@ render._withStripped = true
       
       }
     })();
-},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"src/app.js":[function(require,module,exports) {
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"src/tabs.vue":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _vue = _interopRequireDefault(require("vue"));
+
+var _tabsPane = _interopRequireDefault(require("./tabs-pane"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//
+//
+//
+//
+//
+//
+//
+var _default = {
+  name: "PTabs",
+  props: {
+    selected: {
+      type: String
+    }
+  },
+  data: function data() {
+    return {
+      eventBus: new _vue.default()
+    };
+  },
+  provide: function provide() {
+    return {
+      eventBus: this.eventBus
+    };
+  },
+  methods: {},
+  mounted: function mounted() {
+    var _this = this;
+
+    //first loading line
+    this.$children.forEach(function (vm) {
+      if (vm.name === _this.selected) {
+        var _vm$$el$getBoundingCl = vm.$el.getBoundingClientRect(),
+            width = _vm$$el$getBoundingCl.width;
+
+        width = width - 40;
+        var y = vm.$el.offsetLeft;
+        _this.$refs.line.style.width = "".concat(width, "px");
+        _this.$refs.line.style.left = "".concat(y, "px");
+      }
+    }); //onclick line
+
+    this.eventBus.$on("update:selected", function (name, width, y) {
+      _this.$children.forEach(function (childVm) {
+        if (childVm.$options.name === "PTabsPane" && childVm.name === _this.selected) {
+          _this.$refs.line.style.width = "".concat(width, "px");
+          _this.$refs.line.style.left = "".concat(y, "px");
+        }
+      });
+    });
+    this.eventBus.$emit("update:selected", this.selected);
+  }
+};
+exports.default = _default;
+        var $a06803 = exports.default || module.exports;
+      
+      if (typeof $a06803 === 'function') {
+        $a06803 = $a06803.options;
+      }
+    
+        /* template */
+        Object.assign($a06803, (function () {
+          var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "tabs" },
+    [
+      _vm._t("default"),
+      _vm._v(" "),
+      _c("div", { ref: "line", staticClass: "line" })
+    ],
+    2
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+          return {
+            render: render,
+            staticRenderFns: staticRenderFns,
+            _compiled: true,
+            _scopeId: "data-v-a06803",
+            functional: undefined
+          };
+        })());
+      
+    /* hot reload */
+    (function () {
+      if (module.hot) {
+        var api = require('vue-hot-reload-api');
+        api.install(require('vue'));
+        if (api.compatible) {
+          module.hot.accept();
+          if (!module.hot.data) {
+            api.createRecord('$a06803', $a06803);
+          } else {
+            api.reload('$a06803', $a06803);
+          }
+        }
+
+        
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
+      }
+    })();
+},{"vue":"node_modules/vue/dist/vue.common.js","./tabs-pane":"src/tabs-pane.vue","_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js"}],"src/app.js":[function(require,module,exports) {
 "use strict";
 
 var _vue = _interopRequireDefault(require("vue"));
@@ -13986,7 +13989,7 @@ new _vue.default({
   el: "#app",
   data: {
     message: " ",
-    selected: "z4"
+    selected: "lei"
   },
   components: {
     PButton: _button.default,

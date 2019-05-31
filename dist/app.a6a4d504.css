@@ -986,17 +986,6 @@
   bottom: 20px;
   animation: show-data-v-fcd2d7 0.8s;
 }
-.tabs[data-v-a06803] {
-  display: flex;
-  position: relative;
-  border-bottom: 2px #ddd solid;
-}
-.tabs > .line[data-v-a06803] {
-  position: absolute;
-  bottom: -1px;
-  border-top: 2px solid #409eff;
-  transition: all 350ms;
-}
 .p-tabs-pane > .head[data-v-172e04] {
   padding: 10px 40px 10px 0;
   height: 40px;
@@ -1021,4 +1010,22 @@
   padding-top: 10px;
   position: absolute;
   left: 0;
+}
+.tabs[data-v-a06803] {
+  display: flex;
+  position: relative;
+  border-bottom: 2px #ddd solid;
+}
+.tabs > .line[data-v-a06803] {
+  position: absolute;
+  bottom: -1px;
+  border-top: 2px solid #409eff;
+  transition: all 350ms;
+}
+.tabs > .add[data-v-a06803] {
+  margin-left: auto;
+  border: 1px solid red;
+  display: flex;
+  align-content: center;
+  align-items: center;
 }

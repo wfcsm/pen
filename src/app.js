@@ -22,7 +22,7 @@ new Vue({
     el:"#app",
     data:{
         message:" ",
-        selected:"z4"
+        selected:"lei"
     },
     components:{
         PButton,

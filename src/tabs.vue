@@ -7,6 +7,7 @@
 
 <script>
 import Vue from "vue";
+import PTabsPane from './tabs-pane'
 export default {
   name: "PTabs",
   props: {
@@ -23,6 +24,9 @@ export default {
     return {
       eventBus: this.eventBus
     };
+  },
+  methods:{
+      
   },
   mounted() {
     //first loading line
@@ -62,6 +66,13 @@ export default {
     bottom: -1px;
     border-top: 2px solid #409eff;
     transition: all 350ms;
+  }
+  & > .add{
+      margin-left: auto;
+      border:1px solid red;
+      display: flex;
+      align-content: center;
+      align-items: center;
   }
 }
 </style>
