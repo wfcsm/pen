@@ -27,7 +27,16 @@
 <link rel="stylesheet" href="/app.a6a4d504.css"></head>
 <body>
     <div id="app" style="margin:20px">
-        <p-button @click="toast">点我</p-button>
+        <p-tabs :selected.sync="selected">
+            <p-tabs-pane label="用户管理" disabled="" name="z1">用户管理</p-tabs-pane>
+            <p-tabs-pane label="配置管理" name="z2">配置管理</p-tabs-pane>
+            <p-tabs-pane label="角色管理" name="z3">角色管理</p-tabs-pane>
+            <p-tabs-pane label="定时任务补偿" name="z4">定时任务补偿</p-tabs-pane>
+        </p-tabs>
+
+
+
+        <!-- <p-button  @click="toast">点我</p-button> -->
 
         <!-- <p-row>
             <p-col :span="2" class="header">dfsf</p-col>
@@ -58,14 +67,14 @@
             
         </p-container> -->
 
-        <div class="exhibition">
-            <p-button>默认按钮</p-button>
-            <p-button type="primary">默认按钮</p-button>
-            <p-button type="success">默认按钮</p-button>
+        <!-- <div class="exhibition">
+            <p-button >默认按钮</p-button>
+            <p-button type="primary" >默认按钮</p-button>
+            <p-button type="success" >默认按钮</p-button>
             <p-button type="info">默认按钮</p-button>
             <p-button type="warning">默认按钮</p-button>
             <p-button type="danger">默认按钮</p-button>
-        </div>
+        </div> -->
          <!--<div class="exhibition">
             <p-button :circle="true">默认按钮</p-button>
             <p-button type="primary" :circle="true">默认按钮</p-button>

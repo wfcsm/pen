@@ -11,6 +11,9 @@ import PFooter from './footer'
 import PRow from './row'
 import PCol from './col'
 import {MyPlugin} from './toast-plugin'
+import PTabs from './tabs'
+import PTabsPane from './tabs-pane'
+
 Vue.use(MyPlugin)
 
 
@@ -18,7 +21,8 @@ Vue.use(MyPlugin)
 new Vue({
     el:"#app",
     data:{
-        message:" "
+        message:" ",
+        selected:"z4"
     },
     components:{
         PButton,
@@ -31,9 +35,13 @@ new Vue({
         PMain,
         PFooter,
         PRow,
-        PCol
+        PCol,
+        PTabs,
+        PTabsPane,
+
 
     },
+
     methods:{
         toast(value){
             this.$toast({
@@ -46,11 +54,11 @@ new Vue({
                     console.log("用户说他知道了")
                 }
             })
-            console.log(value)
-        }
+            // console.log(value)
+        },
     },
     mounted(){
-       console.log(MyPlugin)
+    //    console.log(MyPlugin)
     }
 })
 

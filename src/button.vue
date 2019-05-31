@@ -4,7 +4,7 @@
                     'is-circle':circle,
                     'is-disabled':disabled}"
           :disabled="disabled"
-          @click="$emit('click',$event)">
+          v-on="clickListeners">
     <p-icon v-if="icon && !loading" class="picon" :name="icon"></p-icon>
     <p-icon v-if="loading" class="loading"  name="loading"></p-icon>
     <div class="wrapper">
@@ -24,6 +24,22 @@ export default {
         return true
       }
       return  false
+    },
+    clickListeners(){
+       var vm = this
+      // `Object.assign` 将所有的对象合并为一个新对象
+      return Object.assign({},
+        // 我们从父级添加所有的监听器
+        this.$listeners,
+        // 然后我们添加自定义监听器，
+        // 或覆写一些监听器的行为
+        {
+          // 这里确保组件配合 `v-model` 的工作
+          click: function (event) {
+            vm.$emit('click', event.target.value)
+          }
+        }
+      )
     }
   },
   props: {
