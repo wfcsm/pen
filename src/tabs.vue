@@ -1,5 +1,5 @@
 <template>
-  <div class="tabs">
+  <div class="tabs" >
     <slot></slot>
     <div class="line" ref="line"></div>
   </div>
@@ -13,6 +13,9 @@ export default {
   props: {
     selected: {
       type: String
+    },
+    type:{
+      type:String,
     }
   },
   data() {
@@ -24,9 +27,6 @@ export default {
     return {
       eventBus: this.eventBus
     };
-  },
-  methods:{
-      
   },
   mounted() {
     //first loading line
@@ -67,13 +67,7 @@ export default {
     border-top: 2px solid #409eff;
     transition: all 350ms;
   }
-  & > .add{
-      margin-left: auto;
-      border:1px solid red;
-      display: flex;
-      align-content: center;
-      align-items: center;
-  }
+
 }
 </style>
 

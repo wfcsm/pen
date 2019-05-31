@@ -1022,10 +1022,3 @@
   border-top: 2px solid #409eff;
   transition: all 350ms;
 }
-.tabs > .add[data-v-a06803] {
-  margin-left: auto;
-  border: 1px solid red;
-  display: flex;
-  align-content: center;
-  align-items: center;
-}

@@ -13851,6 +13851,9 @@ var _default = {
   props: {
     selected: {
       type: String
+    },
+    type: {
+      type: String
     }
   },
   data: function data() {
@@ -13863,7 +13866,6 @@ var _default = {
       eventBus: this.eventBus
     };
   },
-  methods: {},
   mounted: function mounted() {
     var _this = this;
 

@@ -35,7 +35,8 @@ export default {
     itemStyle() {
         return{
            active:this.active,
-           disabled:this.disabled
+           disabled:this.disabled,
+           
         }
     }
   },
@@ -77,6 +78,7 @@ $disabled-color:#ddd;
          color:$hover-active-color
        }
    }
+
    &>.active{
       color: $hover-active-color
    }
