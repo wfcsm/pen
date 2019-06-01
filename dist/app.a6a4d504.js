@@ -13698,16 +13698,13 @@ exports.default = void 0;
 //
 //
 //
-//
-//
-//
 var _default = {
   name: "PTabsPane",
   props: {
     label: {
       type: String
     },
-    name: {
+    pname: {
       type: [Number, String]
     },
     disabled: {
@@ -13728,7 +13725,7 @@ var _default = {
       };
     }
   },
-  inject: ['eventBus'],
+  inject: ["eventBus"],
   methods: {
     onClick: function onClick() {
       // let {width}
@@ -13738,20 +13735,21 @@ var _default = {
           width = _this$$el$getBounding.width;
 
       width = width - 40;
-      this.eventBus.$emit("update:selected", this.name, width, y);
+      this.eventBus.$emit("update:selected", this.pname, width, y);
     }
   },
   mounted: function mounted() {
     var _this = this;
 
-    console.log(this.disabled);
-    this.eventBus.$on("update:selected", function (vm) {
-      if (vm === _this.name) {
-        _this.active = true;
-      } else {
-        _this.active = false;
-      }
-    });
+    if (this.eventBus) {
+      this.eventBus.$on("update:selected", function (vm) {
+        if (vm === _this.pname) {
+          _this.active = true;
+        } else {
+          _this.active = false;
+        }
+      });
+    }
   }
 };
 exports.default = _default;
@@ -13771,7 +13769,7 @@ exports.default = _default;
     _c(
       "div",
       { staticClass: "head", class: _vm.itemStyle, on: { click: _vm.onClick } },
-      [_vm._v(_vm._s(_vm.label) + "\n    ")]
+      [_vm._v(_vm._s(_vm.label))]
     ),
     _vm._v(" "),
     _c(
@@ -13850,7 +13848,8 @@ var _default = {
   name: "PTabs",
   props: {
     selected: {
-      type: String
+      type: String,
+      required: true
     },
     type: {
       type: String
@@ -13869,9 +13868,12 @@ var _default = {
   mounted: function mounted() {
     var _this = this;
 
-    //first loading line
+    var error = true; //first loading line
+
     this.$children.forEach(function (vm) {
-      if (vm.name === _this.selected) {
+      if (vm.pname === _this.selected) {
+        error = false;
+
         var _vm$$el$getBoundingCl = vm.$el.getBoundingClientRect(),
             width = _vm$$el$getBoundingCl.width;
 
@@ -13880,11 +13882,18 @@ var _default = {
         _this.$refs.line.style.width = "".concat(width, "px");
         _this.$refs.line.style.left = "".concat(y, "px");
       }
-    }); //onclick line
+    });
+
+    if (error) {
+      throw error("请检查p-tabs-pane的name和selected的值");
+    } //onclick line
+
 
     this.eventBus.$on("update:selected", function (name, width, y) {
+      console.log(name);
+
       _this.$children.forEach(function (childVm) {
-        if (childVm.$options.name === "PTabsPane" && childVm.name === _this.selected) {
+        if (childVm.$options.name === "PTabsPane" && childVm.pname === _this.selected) {
           _this.$refs.line.style.width = "".concat(width, "px");
           _this.$refs.line.style.left = "".concat(y, "px");
         }
@@ -14053,7 +14062,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "6405" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "14271" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

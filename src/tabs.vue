@@ -12,7 +12,8 @@ export default {
   name: "PTabs",
   props: {
     selected: {
-      type: String
+      type: String,
+      required: true
     },
     type:{
       type:String,
@@ -29,9 +30,14 @@ export default {
     };
   },
   mounted() {
+    
+
+    let error=true
     //first loading line
     this.$children.forEach(vm => {
-      if (vm.name === this.selected) {
+
+      if (vm.pname === this.selected) {
+        error=false;
         let { width } = vm.$el.getBoundingClientRect();
         width = width - 40;
         let y = vm.$el.offsetLeft;
@@ -39,12 +45,16 @@ export default {
         this.$refs.line.style.left = `${y}px`;
       }
     });
+    if(error){
+        throw error("请检查p-tabs-pane的name和selected的值")
+    }
     //onclick line
     this.eventBus.$on("update:selected", (name, width, y) => {
+        console.log(name)
       this.$children.forEach(childVm => {
         if (
           childVm.$options.name === "PTabsPane" &&
-          childVm.name === this.selected
+          childVm.pname === this.selected
         ) {
           this.$refs.line.style.width = `${width}px`;
           this.$refs.line.style. left= `${y}px`;
