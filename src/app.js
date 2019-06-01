@@ -13,6 +13,7 @@ import PCol from './col'
 import {MyPlugin} from './toast-plugin'
 import PTabs from './tabs'
 import PTabsPane from './tabs-pane'
+import PPopover from './popover'
 
 Vue.use(MyPlugin)
 
@@ -38,11 +39,15 @@ new Vue({
         PCol,
         PTabs,
         PTabsPane,
-
+        PPopover
 
     },
 
     methods:{
+        yyy(){
+            console.log("yyy")
+
+        },
         toast(value){
             this.$toast({
                 message:'恭喜你，这是一条成功消息',

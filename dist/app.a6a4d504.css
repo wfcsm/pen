@@ -1022,3 +1022,11 @@
   border-top: 2px solid #409eff;
   transition: all 350ms;
 }
+.popover[data-v-bfac74] {
+  display: inline-block;
+}
+.contentWrapper[data-v-bfac74] {
+  position: absolute;
+  border: 1px solid red;
+  transform: translateY(-100%);
+}
