@@ -1,8 +1,8 @@
 <template>
-  <div class="popover" ref="popover" >
+  <div class="popover" ref="popover">
     <div
       class="contentWrapper"
-      :class="{[`position-${position}`]:true}"
+      :class="{[`position-${newPostion}`]:true}"
       v-if="show"
       ref="contentWrapper"
     >
@@ -25,51 +25,51 @@ export default {
         return ["top", "bottom", "left", "right"].indexOf(value) >= 0;
       }
     },
-    trigger:{
-      type:String,
-      default:"click",
-      validator(value){
-        return ['click','hover'].indexOf(value)>=0;
+    trigger: {
+      type: String,
+      default: "click",
+      validator(value) {
+        return ["click", "hover"].indexOf(value) >= 0;
       }
     }
   },
   data() {
     return {
-      show: false
+      show: false,
+      newPostion:this.position
     };
   },
-  mounted(){
-    if(this.trigger==="click"){
-      this.$refs.popover.addEventListener('click',this.onClick)
-    }else{
-      this.$refs.popover.addEventListener('mouseenter',this.open)
-      this.$refs.popover.addEventListener('mouseleave',this.close)
-    }
-    
-  },
-  destroyed(){
-    if(this.trigger==="click"){
-      this.$refs.popover.removeEventListener('click',this.onClick)
-    }else{
-      this.$refs.popover.removeEventListener('mouseenter',this.open)
-      this.$refs.popover.addEventListener('mouseleave',this.close)
+  mounted() {
+    if (this.trigger === "click") {
+      this.$refs.popover.addEventListener("click", this.onClick);
+    } else {
+      this.$refs.popover.addEventListener("mouseenter", this.open);
+      this.$refs.popover.addEventListener("mouseleave", this.close);
     }
   },
-  computed:{
-    openEvent(){
-      if(this.trigger==="click"){
-        return "click"
-      }else{
-        return "mouseenter"
+  destroyed() {
+    if (this.trigger === "click") {
+      this.$refs.popover.removeEventListener("click", this.onClick);
+    } else {
+      this.$refs.popover.removeEventListener("mouseenter", this.open);
+      this.$refs.popover.removeEventListener("mouseleave", this.close);
+    }
+  },
+  computed: {
+    openEvent() {
+      if (this.trigger === "click") {
+        return "click";
+      } else {
+        return "mouseenter";
       }
     },
-    closeEvent(){
-      if(this.trigger==="click"){
-        return 'click'
-      }else{
-        return 'mouseleave'
+    closeEvent() {
+      if (this.trigger === "click") {
+        return "click";
+      } else {
+        return "mouseleave";
       }
-    }
+    },
   },
   methods: {
     positionPopover() {
@@ -78,33 +78,57 @@ export default {
         width,
         height,
         top,
-        left
+        left,
+        right,
+        bottom
       } = this.$refs.triggerWrapper.getBoundingClientRect();
-      let {height:height2}= this.$refs.contentWrapper.getBoundingClientRect();
-
-      let x={
-          top:{
-            left:left + window.scrollX,
-            top:top + window.scrollY
-          },
-          bottom:{
-            left:left + window.scrollX,
-            top:top + window.scrollY+height
-          },
-          left:{
-            left:left + window.scrollX,
-            top:top + window.scrollY+(height-height2)/2
-          },
-          right:{
-            left:left + window.scrollX+width,
-            top:top + window.scrollY+(height-height2)/2
-          }
+      let {
+        height: height2,
+        width: width2,
+        top: top2,
+        left: left2
+      } = this.$refs.contentWrapper.getBoundingClientRect();
+   
+      if (this.newPostion === "left") {
+        if (width2 > left) {
+          this.newPostion = "right";
+        }
+      } else if (this.newPostion === "right") {
+        if (width2 > (document.documentElement.clientWidth-width-left)) {
+          this.newPostion = "left";
+        }
+      } else if (this.newPostion === "top") {
+        if (height2 > top) {
+          this.newPostion = "bottom";
+        }
+      } else if (this.newPostion === "bottom") {
+        if (height2 > (document.documentElement.clientHeight-top-height)) {
+          this.newPostion = "top";
+        }
       }
-        this.$refs.contentWrapper.style.left=x[this.position].left+'px';
-        this.$refs.contentWrapper.style.top=x[this.position].top+'px';
+      let x = {
+        top: {
+          left: left + window.scrollX,
+          top: top + window.scrollY
+        },
+        bottom: {
+          left: left + window.scrollX,
+          top: top + window.scrollY + height
+        },
+        left: {
+          left: left + window.scrollX,
+          top: top + window.scrollY + (height - height2) / 2
+        },
+        right: {
+          left: left + window.scrollX + width,
+          top: top + window.scrollY + (height - height2) / 2
+        }
+      };
+      this.$refs.contentWrapper.style.left = x[this.newPostion].left + "px";
+      this.$refs.contentWrapper.style.top = x[this.newPostion].top + "px";
+
     },
     close() {
-      console.log("关闭");
       this.show = false;
       document.removeEventListener("click", this.onClickDocument);
     },
@@ -117,10 +141,10 @@ export default {
     },
     open() {
       this.show = true;
-      setTimeout(() => {
+      this.$nextTick(() => {
         this.positionPopover();
         document.addEventListener("click", this.onClickDocument);
-      }, 0);
+      });
     },
     onClick(event) {
       if (this.$refs.triggerWrapper.contains(event.target)) {
@@ -184,7 +208,7 @@ export default {
       height: 0;
       border: 10px solid transparent;
       position: absolute;
-      bottom:100%;
+      bottom: 100%;
       border-top: none;
     }
     &::before {
@@ -196,7 +220,7 @@ export default {
     }
   }
   &.position-left {
-    transform: translateX(-100%) ;
+    transform: translateX(-100%);
     margin-left: -10px;
     &::before,
     &::after {
@@ -207,18 +231,17 @@ export default {
       border: 10px solid transparent;
       position: absolute;
       left: 100%;
-      top:50%;
+      top: 50%;
       transform: translateY(-50%);
       border-right: none;
     }
     &::before {
       border-left-color: rgba(0, 0, 0, 0.1);
       // left: 100%;
-    
     }
     &::after {
       border-left-color: white;
-      left:calc(100% - 1px);
+      left: calc(100% - 1px);
     }
   }
   &.position-right {
@@ -232,16 +255,16 @@ export default {
       border: 10px solid transparent;
       position: absolute;
       right: 100%;
-      top:50%;
+      top: 50%;
       transform: translateY(-50%);
       border-left: none;
     }
     &::before {
-      border-right-color: rgba(0, 0, 0, 0.1);    
+      border-right-color: rgba(0, 0, 0, 0.1);
     }
     &::after {
       border-right-color: white;
-      right:calc(100% - 1px);
+      right: calc(100% - 1px);
     }
   }
 }

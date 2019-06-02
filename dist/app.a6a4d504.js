@@ -13996,29 +13996,52 @@ var _default = {
       type: String,
       default: "click",
       validator: function validator(value) {
+<<<<<<< HEAD
         return ['click', 'hover'].indexOf(value) >= 0;
+=======
+        return ["click", "hover"].indexOf(value) >= 0;
+>>>>>>> dev-popover
       }
     }
   },
   data: function data() {
     return {
+<<<<<<< HEAD
       show: false
+=======
+      show: false,
+      newPostion: this.position
+>>>>>>> dev-popover
     };
   },
   mounted: function mounted() {
     if (this.trigger === "click") {
+<<<<<<< HEAD
       this.$refs.popover.addEventListener('click', this.onClick);
     } else {
       this.$refs.popover.addEventListener('mouseenter', this.open);
       this.$refs.popover.addEventListener('mouseleave', this.close);
+=======
+      this.$refs.popover.addEventListener("click", this.onClick);
+    } else {
+      this.$refs.popover.addEventListener("mouseenter", this.open);
+      this.$refs.popover.addEventListener("mouseleave", this.close);
+>>>>>>> dev-popover
     }
   },
   destroyed: function destroyed() {
     if (this.trigger === "click") {
+<<<<<<< HEAD
       this.$refs.popover.removeEventListener('click', this.onClick);
     } else {
       this.$refs.popover.removeEventListener('mouseenter', this.open);
       this.$refs.popover.addEventListener('mouseleave', this.close);
+=======
+      this.$refs.popover.removeEventListener("click", this.onClick);
+    } else {
+      this.$refs.popover.removeEventListener("mouseenter", this.open);
+      this.$refs.popover.removeEventListener("mouseleave", this.close);
+>>>>>>> dev-popover
     }
   },
   computed: {
@@ -14031,9 +14054,15 @@ var _default = {
     },
     closeEvent: function closeEvent() {
       if (this.trigger === "click") {
+<<<<<<< HEAD
         return 'click';
       } else {
         return 'mouseleave';
+=======
+        return "click";
+      } else {
+        return "mouseleave";
+>>>>>>> dev-popover
       }
     }
   },
@@ -14045,10 +14074,40 @@ var _default = {
           width = _this$$refs$triggerWr.width,
           height = _this$$refs$triggerWr.height,
           top = _this$$refs$triggerWr.top,
+<<<<<<< HEAD
           left = _this$$refs$triggerWr.left;
 
       var _this$$refs$contentWr = this.$refs.contentWrapper.getBoundingClientRect(),
           height2 = _this$$refs$contentWr.height;
+=======
+          left = _this$$refs$triggerWr.left,
+          right = _this$$refs$triggerWr.right,
+          bottom = _this$$refs$triggerWr.bottom;
+
+      var _this$$refs$contentWr = this.$refs.contentWrapper.getBoundingClientRect(),
+          height2 = _this$$refs$contentWr.height,
+          width2 = _this$$refs$contentWr.width,
+          top2 = _this$$refs$contentWr.top,
+          left2 = _this$$refs$contentWr.left;
+
+      if (this.newPostion === "left") {
+        if (width2 > left) {
+          this.newPostion = "right";
+        }
+      } else if (this.newPostion === "right") {
+        if (width2 > document.documentElement.clientWidth - width - left) {
+          this.newPostion = "left";
+        }
+      } else if (this.newPostion === "top") {
+        if (height2 > top) {
+          this.newPostion = "bottom";
+        }
+      } else if (this.newPostion === "bottom") {
+        if (height2 > document.documentElement.clientHeight - top - height) {
+          this.newPostion = "top";
+        }
+      }
+>>>>>>> dev-popover
 
       var x = {
         top: {
@@ -14068,11 +14127,18 @@ var _default = {
           top: top + window.scrollY + (height - height2) / 2
         }
       };
+<<<<<<< HEAD
       this.$refs.contentWrapper.style.left = x[this.position].left + 'px';
       this.$refs.contentWrapper.style.top = x[this.position].top + 'px';
     },
     close: function close() {
       console.log("关闭");
+=======
+      this.$refs.contentWrapper.style.left = x[this.newPostion].left + "px";
+      this.$refs.contentWrapper.style.top = x[this.newPostion].top + "px";
+    },
+    close: function close() {
+>>>>>>> dev-popover
       this.show = false;
       document.removeEventListener("click", this.onClickDocument);
     },
@@ -14087,11 +14153,19 @@ var _default = {
       var _this = this;
 
       this.show = true;
+<<<<<<< HEAD
       setTimeout(function () {
         _this.positionPopover();
 
         document.addEventListener("click", _this.onClickDocument);
       }, 0);
+=======
+      this.$nextTick(function () {
+        _this.positionPopover();
+
+        document.addEventListener("click", _this.onClickDocument);
+      });
+>>>>>>> dev-popover
     },
     onClick: function onClick(event) {
       if (this.$refs.triggerWrapper.contains(event.target)) {
@@ -14128,7 +14202,11 @@ exports.default = _default;
             ref: "contentWrapper",
             staticClass: "contentWrapper",
             class: ((_obj = {}),
+<<<<<<< HEAD
             (_obj["position-" + _vm.position] = true),
+=======
+            (_obj["position-" + _vm.newPostion] = true),
+>>>>>>> dev-popover
             _obj)
           },
           [_vm._t("content")],
@@ -14286,7 +14364,11 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
+<<<<<<< HEAD
   var ws = new WebSocket(protocol + '://' + hostname + ':' + "6531" + '/');
+=======
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "3964" + '/');
+>>>>>>> dev-popover
 
   ws.onmessage = function (event) {
     checkedAssets = {};
