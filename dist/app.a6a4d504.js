@@ -13968,12 +13968,65 @@ exports.default = void 0;
 //
 //
 //
+//
+//
+//
+//
+//
 var _default = {
   name: "PPopover",
+  props: {
+    position: {
+      type: String,
+      default: "top",
+      validator: function validator(value) {
+        return ["top", "bottom", "left", "right"].indexOf(value) >= 0;
+      }
+    },
+    trigger: {
+      type: String,
+      default: "click",
+      validator: function validator(value) {
+        return ['click', 'hover'].indexOf(value) >= 0;
+      }
+    }
+  },
   data: function data() {
     return {
       show: false
     };
+  },
+  mounted: function mounted() {
+    if (this.trigger === "click") {
+      this.$refs.popover.addEventListener('click', this.onClick);
+    } else {
+      this.$refs.popover.addEventListener('mouseenter', this.open);
+      this.$refs.popover.addEventListener('mouseleave', this.close);
+    }
+  },
+  destroyed: function destroyed() {
+    if (this.trigger === "click") {
+      this.$refs.popover.removeEventListener('click', this.onClick);
+    } else {
+      this.$refs.popover.removeEventListener('mouseenter', this.open);
+      this.$refs.popover.addEventListener('mouseleave', this.close);
+    }
+  },
+  computed: {
+    openEvent: function openEvent() {
+      if (this.trigger === "click") {
+        return "click";
+      } else {
+        return "mouseenter";
+      }
+    },
+    closeEvent: function closeEvent() {
+      if (this.trigger === "click") {
+        return 'click';
+      } else {
+        return 'mouseleave';
+      }
+    }
   },
   methods: {
     positionPopover: function positionPopover() {
@@ -13985,10 +14038,32 @@ var _default = {
           top = _this$$refs$triggerWr.top,
           left = _this$$refs$triggerWr.left;
 
-      this.$refs.contentWrapper.style.left = "".concat(left + window.screenX, "px");
-      this.$refs.contentWrapper.style.top = "".concat(top + window.screenY, "px");
+      var _this$$refs$contentWr = this.$refs.contentWrapper.getBoundingClientRect(),
+          height2 = _this$$refs$contentWr.height;
+
+      var x = {
+        top: {
+          left: left + window.scrollX,
+          top: top + window.scrollY
+        },
+        bottom: {
+          left: left + window.scrollX,
+          top: top + window.scrollY + height
+        },
+        left: {
+          left: left + window.scrollX,
+          top: top + window.scrollY + (height - height2) / 2
+        },
+        right: {
+          left: left + window.scrollX + width,
+          top: top + window.scrollY + (height - height2) / 2
+        }
+      };
+      this.$refs.contentWrapper.style.left = x[this.position].left + 'px';
+      this.$refs.contentWrapper.style.top = x[this.position].top + 'px';
     },
     close: function close() {
+      console.log("关闭");
       this.show = false;
       document.removeEventListener("click", this.onClickDocument);
     },
@@ -14032,30 +14107,33 @@ exports.default = _default;
         /* template */
         Object.assign($bfac74, (function () {
           var render = function() {
+  var _obj
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { ref: "popover", staticClass: "popover", on: { click: _vm.onClick } },
-    [
-      _vm.show
-        ? _c(
-            "div",
-            { ref: "contentWrapper", staticClass: "contentWrapper" },
-            [_vm._t("content")],
-            2
-          )
-        : _vm._e(),
-      _vm._v(" "),
-      _c(
-        "div",
-        { ref: "triggerWrapper", staticClass: "triggerWrapper" },
-        [_vm._t("default")],
-        2
-      )
-    ]
-  )
+  return _c("div", { ref: "popover", staticClass: "popover" }, [
+    _vm.show
+      ? _c(
+          "div",
+          {
+            ref: "contentWrapper",
+            staticClass: "contentWrapper",
+            class: ((_obj = {}),
+            (_obj["position-" + _vm.position] = true),
+            _obj)
+          },
+          [_vm._t("content")],
+          2
+        )
+      : _vm._e(),
+    _vm._v(" "),
+    _c(
+      "div",
+      { ref: "triggerWrapper", staticClass: "triggerWrapper" },
+      [_vm._t("default")],
+      2
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -14199,7 +14277,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "3258" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "7324" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
