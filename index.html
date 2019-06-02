@@ -31,12 +31,36 @@
     </style>
 </head>
 <body>
-    <div id="app" style="margin:20px">
-        <p-tabs selected="lei" >
-           <p-tabs-pane label="武磊" pname="lei">我是武磊</p-tabs-pane>
-           <p-tabs-pane label="梅西" pname="messi">我是梅西</p-tabs-pane>
-           <p-tabs-pane label="C罗" pname="c">我是C罗</p-tabs-pane>
-        </p-tabs>
+    <div id="app" style="margin-top:250px;margin-left:550px">
+        
+            <p-popover position="left" trigger="hover">
+                <template v-slot:content>
+                    popover内容   popover内容  
+                    popover内容   popover内容  
+                    popover内容   popover内容  
+                    popover内容   popover内容  
+
+                    popover内容   popover内容  
+                    popover内容   popover内容  
+                    popover内容   popover内容  
+                    popover内容   popover内容  
+                    popover内容   popover内容  
+                    popover内容   popover内容  
+                    
+                </template>
+                <p-button>按钮</p-button>
+            </p-popover>
+      
+       
+
+
+
+        <!-- <p-tabs :selected.sync="selected" >
+           <p-tabs-pane label="武磊" name="lei">我是武磊</p-tabs-pane>
+           <p-tabs-pane label="梅西" name="messi">我是梅西</p-tabs-pane>
+           <p-tabs-pane label="C罗" name="c">我是C罗</p-tabs-pane>
+        </p-tabs> -->
+
 
 
 
