@@ -45,6 +45,7 @@ export default {
       this.$refs.popover.addEventListener('mouseenter',this.open)
       this.$refs.popover.addEventListener('mouseleave',this.close)
     }
+    
   },
   destroyed(){
     if(this.trigger==="click"){
