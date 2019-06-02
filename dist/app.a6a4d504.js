@@ -13987,29 +13987,30 @@ var _default = {
       type: String,
       default: "click",
       validator: function validator(value) {
-        return ['click', 'hover'].indexOf(value) >= 0;
+        return ["click", "hover"].indexOf(value) >= 0;
       }
     }
   },
   data: function data() {
     return {
-      show: false
+      show: false,
+      newPostion: this.position
     };
   },
   mounted: function mounted() {
     if (this.trigger === "click") {
-      this.$refs.popover.addEventListener('click', this.onClick);
+      this.$refs.popover.addEventListener("click", this.onClick);
     } else {
-      this.$refs.popover.addEventListener('mouseenter', this.open);
-      this.$refs.popover.addEventListener('mouseleave', this.close);
+      this.$refs.popover.addEventListener("mouseenter", this.open);
+      this.$refs.popover.addEventListener("mouseleave", this.close);
     }
   },
   destroyed: function destroyed() {
     if (this.trigger === "click") {
-      this.$refs.popover.removeEventListener('click', this.onClick);
+      this.$refs.popover.removeEventListener("click", this.onClick);
     } else {
-      this.$refs.popover.removeEventListener('mouseenter', this.open);
-      this.$refs.popover.addEventListener('mouseleave', this.close);
+      this.$refs.popover.removeEventListener("mouseenter", this.open);
+      this.$refs.popover.removeEventListener("mouseleave", this.close);
     }
   },
   computed: {
@@ -14022,9 +14023,9 @@ var _default = {
     },
     closeEvent: function closeEvent() {
       if (this.trigger === "click") {
-        return 'click';
+        return "click";
       } else {
-        return 'mouseleave';
+        return "mouseleave";
       }
     }
   },
@@ -14036,10 +14037,33 @@ var _default = {
           width = _this$$refs$triggerWr.width,
           height = _this$$refs$triggerWr.height,
           top = _this$$refs$triggerWr.top,
-          left = _this$$refs$triggerWr.left;
+          left = _this$$refs$triggerWr.left,
+          right = _this$$refs$triggerWr.right,
+          bottom = _this$$refs$triggerWr.bottom;
 
       var _this$$refs$contentWr = this.$refs.contentWrapper.getBoundingClientRect(),
-          height2 = _this$$refs$contentWr.height;
+          height2 = _this$$refs$contentWr.height,
+          width2 = _this$$refs$contentWr.width,
+          top2 = _this$$refs$contentWr.top,
+          left2 = _this$$refs$contentWr.left;
+
+      if (this.newPostion === "left") {
+        if (width2 > left) {
+          this.newPostion = "right";
+        }
+      } else if (this.newPostion === "right") {
+        if (width2 > document.documentElement.clientWidth - width - left) {
+          this.newPostion = "left";
+        }
+      } else if (this.newPostion === "top") {
+        if (height2 > top) {
+          this.newPostion = "bottom";
+        }
+      } else if (this.newPostion === "bottom") {
+        if (height2 > document.documentElement.clientHeight - top - height) {
+          this.newPostion = "top";
+        }
+      }
 
       var x = {
         top: {
@@ -14059,11 +14083,10 @@ var _default = {
           top: top + window.scrollY + (height - height2) / 2
         }
       };
-      this.$refs.contentWrapper.style.left = x[this.position].left + 'px';
-      this.$refs.contentWrapper.style.top = x[this.position].top + 'px';
+      this.$refs.contentWrapper.style.left = x[this.newPostion].left + "px";
+      this.$refs.contentWrapper.style.top = x[this.newPostion].top + "px";
     },
     close: function close() {
-      console.log("关闭");
       this.show = false;
       document.removeEventListener("click", this.onClickDocument);
     },
@@ -14078,11 +14101,11 @@ var _default = {
       var _this = this;
 
       this.show = true;
-      setTimeout(function () {
+      this.$nextTick(function () {
         _this.positionPopover();
 
         document.addEventListener("click", _this.onClickDocument);
-      }, 0);
+      });
     },
     onClick: function onClick(event) {
       if (this.$refs.triggerWrapper.contains(event.target)) {
@@ -14119,7 +14142,7 @@ exports.default = _default;
             ref: "contentWrapper",
             staticClass: "contentWrapper",
             class: ((_obj = {}),
-            (_obj["position-" + _vm.position] = true),
+            (_obj["position-" + _vm.newPostion] = true),
             _obj)
           },
           [_vm._t("content")],
@@ -14277,7 +14300,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "7324" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "3964" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
