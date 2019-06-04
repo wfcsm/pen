@@ -34,8 +34,8 @@ import {
     PCollapse,
     PCollapseItem,
     Toast
-} from 'pen'
-import 'pen/dist/index.css'
+} from 'pen-ui'
+import 'pen-ui/dist/index.css'
 ```
 
 安装方式
