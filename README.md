@@ -37,3 +37,8 @@ import {
 } from 'pen'
 import 'pen/dist/index.css'
 ```
+
+安装方式
+```
+yarn add pen-ui
+```
