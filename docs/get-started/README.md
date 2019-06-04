@@ -38,4 +38,5 @@ import {
     PCollapseItem,
     Toast
 } from 'pen'
-impor
+import 'pen/dist/index.css'
+```
