@@ -6,5 +6,5 @@ sidebarDepth: 2
 使用方法
 
 <ClientOnly>
-<layout></layout>
+<layout-demos></layout-demos>
 </ClientOnly>

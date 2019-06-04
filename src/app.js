@@ -10,14 +10,14 @@ import PMain from './main'
 import PFooter from './footer'
 import PRow from './row'
 import PCol from './col'
-import {MyPlugin} from './toast-plugin'
+import Toast from './toast-plugin'
 import PTabs from './tabs'
 import PTabsPane from './tabs-pane'
 import PPopover from './popover'
 import PCollapse from './collapse'
 import PCollapseItem from './collapse-item'
 
-Vue.use(MyPlugin)
+Vue.use(Toast)
 
 
 
@@ -58,7 +58,7 @@ new Vue({
                 showClose: false,
                 type:"info",
                 isClose:true,
-                postion:"bottom",
+                postion:"top",
                 callback:function(){
                     console.log("用户说他知道了")
                 }

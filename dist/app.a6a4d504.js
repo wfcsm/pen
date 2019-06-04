@@ -13652,14 +13652,13 @@ render._withStripped = true
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.MyPlugin = void 0;
+exports.default = void 0;
 
 var _toast = _interopRequireDefault(require("./toast"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var MyPlugin = {};
-exports.MyPlugin = MyPlugin;
 
 function createToast(Vue, propsObjec) {
   var Constructor = Vue.extend(_toast.default);
@@ -13682,6 +13681,9 @@ MyPlugin.install = function (Vue, options) {
     currentToast = createToast(Vue, propsObjec);
   };
 };
+
+var _default = MyPlugin;
+exports.default = _default;
 },{"./toast":"src/toast.vue"}],"src/tabs.vue":[function(require,module,exports) {
 "use strict";
 
@@ -14466,7 +14468,7 @@ var _row = _interopRequireDefault(require("./row"));
 
 var _col = _interopRequireDefault(require("./col"));
 
-var _toastPlugin = require("./toast-plugin");
+var _toastPlugin = _interopRequireDefault(require("./toast-plugin"));
 
 var _tabs = _interopRequireDefault(require("./tabs"));
 
@@ -14480,7 +14482,7 @@ var _collapseItem = _interopRequireDefault(require("./collapse-item"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-_vue.default.use(_toastPlugin.MyPlugin);
+_vue.default.use(_toastPlugin.default);
 
 new _vue.default({
   el: "#app",
@@ -14516,7 +14518,7 @@ new _vue.default({
         showClose: false,
         type: "info",
         isClose: true,
-        postion: "bottom",
+        postion: "top",
         callback: function callback() {
           console.log("用户说他知道了");
         }

@@ -19,6 +19,4 @@ MyPlugin.install = function (Vue, options) {
         currentToast=createToast(Vue,propsObjec)
     }
 }
-export {
-    MyPlugin
-}
+export default MyPlugin

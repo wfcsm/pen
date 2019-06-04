@@ -16,5 +16,5 @@ icon： String 定义图标 有**delete**，**share**，**edit**，**loading**
 loading：布尔值 定义加载动画 默认值 **false**
 
 <ClientOnly>
-    <button-demos></button-demos>
+<button-demos></button-demos>
 </ClientOnly>

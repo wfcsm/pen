@@ -1,6 +1,6 @@
 <template>
     <div>
-          <div class="exhibition">
+           <div class="exhibition">
             <p-button >默认按钮</p-button>
             <p-button type="primary" >默认按钮</p-button>
             <p-button type="success" >默认按钮</p-button>
@@ -37,7 +37,7 @@
             <p-button type="primary" icon="delete" :loading="true"  :circle="true">默认按钮</p-button>
             <p-button type="primary" icon="delete" :loading="true"  >默认按钮</p-button>
         </div> 
-         <pre><code>{{content5}}</code></pre>
+         <pre><code>{{content5}}</code></pre> 
     </div>
 </template>
 
