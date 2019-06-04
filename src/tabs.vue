@@ -7,7 +7,6 @@
 
 <script>
 import Vue from "vue";
-import PTabsPane from './tabs-pane'
 export default {
   name: "PTabs",
   props: {

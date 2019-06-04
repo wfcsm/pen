@@ -180,7 +180,6 @@ $noraml-active-border-color: #3a8ee6;
     color: #c0c4cc;
     cursor: not-allowed;
     background-image: none;
-    background-color: #fff;
     border-color: #ebeef5;
   }
 

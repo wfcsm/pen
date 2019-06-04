@@ -70,6 +70,17 @@ export default {
         return "mouseleave";
       }
     },
+    //  newPostion:{
+    //    get(){
+    //      return this.position
+    //    },
+    //    set(){
+    //      this.position
+    //    }
+    //  }
+    // newPostion(){
+    //   return this.position
+    // }
   },
   methods: {
     positionPopover() {
@@ -126,18 +137,28 @@ export default {
       };
       this.$refs.contentWrapper.style.left = x[this.newPostion].left + "px";
       this.$refs.contentWrapper.style.top = x[this.newPostion].top + "px";
-
+    
     },
     close() {
       this.show = false;
       document.removeEventListener("click", this.onClickDocument);
     },
     onClickDocument(e) {
-      if (this.$refs.contentWrapper.contains(e.target)) {
+      if (
+        this.$refs.popover &&
+        (this.$refs.popover === e.target ||
+          this.$refs.popover.contains(e.target))
+      ) {
         return;
-      } else {
-        this.close();
       }
+      if (
+        this.$refs.contentWrapper &&
+        (this.$refs.contentWrapper === e.target ||
+          this.$refs.contentWrapper.contains(e.target))
+      ) {
+        return;
+      }
+      this.close();
     },
     open() {
       this.show = true;
@@ -150,6 +171,7 @@ export default {
       if (this.$refs.triggerWrapper.contains(event.target)) {
         //点击按钮
         if (this.show) {
+          
           this.close();
         } else {
           //如果不是显现的
@@ -176,6 +198,7 @@ export default {
   filter:drop-shadow(0 2px 12px 0 rgba(0, 0, 0, 0.1));
   word-break: break-all;
   border-radius: 4px;
+  background: #fff;
   &.position-top {
     transform: translateY(-100%);
     margin-top: -10px;

@@ -29,6 +29,6 @@ export default {
 <style lang="scss" scoped>
 .p-row{
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: no-wrap;
 }
 </style>

@@ -2,15 +2,15 @@
     <div class="p-input" >
         <input :placeholder="placeholder" 
                :disabled="disabled" 
-               :class="{erromessage}"
+               :class="{errormessage}"
                :value="value"
                @change="$emit('change',$event.target.value)"
                @input="$emit('input',$event.target.value)"
                @focus="$emit('focus',$event.target.value)"
                @blur="$emit('blur',$event.target.value)"/>
-        <div v-if="erromessage">
+        <div v-if="errormessage">
             <p-icon name="error" class="error"></p-icon>
-            {{erromessage}}
+            {{errormessage}}
         </div>
     </div>
 </template>
@@ -41,7 +41,7 @@ export default {
             type:Boolean,
             default:false
         },
-        erromessage:{
+        errormessage:{
             type:String
         }
     },

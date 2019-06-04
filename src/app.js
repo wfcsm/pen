@@ -14,6 +14,8 @@ import {MyPlugin} from './toast-plugin'
 import PTabs from './tabs'
 import PTabsPane from './tabs-pane'
 import PPopover from './popover'
+import PCollapse from './collapse'
+import PCollapseItem from './collapse-item'
 
 Vue.use(MyPlugin)
 
@@ -23,7 +25,7 @@ new Vue({
     el:"#app",
     data:{
         message:" ",
-        selected:"lei"
+        selected:["1","2"]
     },
     components:{
         PButton,
@@ -39,7 +41,9 @@ new Vue({
         PCol,
         PTabs,
         PTabsPane,
-        PPopover
+        PPopover,
+        PCollapse,
+        PCollapseItem
 
     },
 

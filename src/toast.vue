@@ -111,6 +111,7 @@ export default {
   align-items: center;
   border: none;
   justify-content: space-between;
+  z-index: 100;
   .close{
      cursor: pointer;
   }
