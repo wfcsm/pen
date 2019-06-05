@@ -50,11 +50,11 @@ const expect = chai.expect;
         const Constructor = Vue.extend(Input)
         const vm = new Constructor({
         propsData: {
-            erromessage: "sadaads"
+            errormessage: "sadaads"
         }
         }).$mount()
         const useElement = vm.$el.querySelector('Input')
-        expect(useElement.getAttribute("class")).to.equal("erromessage")
+        expect(useElement.getAttribute("class")).to.equal("errormessage")
         vm.$destroy()
     })
 

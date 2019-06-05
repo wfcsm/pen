@@ -26,7 +26,7 @@
 import Vue from "vue";
 import PToast from "../../../src/toast";
 import PButton from "../../../src/button";
-import { MyPlugin } from "../../../src/toast-plugin";
+import  MyPlugin  from "../../../src/toast-plugin";
 Vue.use(MyPlugin);
 export default {
   components: {
